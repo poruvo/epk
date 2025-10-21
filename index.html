@@ -346,6 +346,27 @@
       body{background:#fff}
       a{color:#000}
     }
+
+    .gear-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .gear-list li {
+      margin: 0.25em 0;
+      font-family: var(--mono);
+      font-size: 0.95rem;
+    }
+    .gear-list a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--accent);
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    .gear-list a:hover {
+      color: #fff;
+      border-color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -464,7 +485,8 @@
         </div>
         <div>
           <h2 class="glitch" data-text="Performance Notes">Performance Notes</h2>
-          <ul>
+           <p>His recent work delves into psychological themes through recurring characters and looped dream sequences, unfolding across recorded releases and live shows.</p>
+           <p class="bio-text">With a fully mobile rig, I bring music to life anywhere, anytime—whether it's a pop-up street performance, a private event, or a festival stage. My setup is designed for total flexibility, letting me create immersive sound experiences wherever inspiration or opportunity strikes.</p>
             <li><strong>Average set length:</strong> 15–45 minutes (I can play a full set or a shorter showcase)</li>
             <li><strong>Extreme Set length:</strong> 2-4 hours (I'll need resources for this, but I have the music ready to go.)</li>
             <li><strong>Rig:</strong> M8 tracker, Wind controller (Digital Sax), Tenor & (prolly not) Alto Sax, sampler, live FX; optional audio-reactive GLSL / Synesthesia visuals</li>
@@ -521,6 +543,49 @@
         </details>
       </section>
 
+      <section id="gear" aria-label="Tools & Gear">
+        <h2 class="glitch" data-text="Tools & Gear">Tools & Gear</h2>
+        <p class="sub">Core instruments and tools used in live performance and production.</p>
+  <p class="sub">My mobile rig is designed for busking and street performance, featuring portable loudspeakers and a rugged backpack. The setup is fully amplified with battery-powered gear, allowing for flexible, high-quality sound in any location.</p>
+        <ul class="gear-list">
+          <li><a href="https://dirtywave.com/products/m8-tracker" target="_blank" rel="noopener">Dirtywave M8 Tracker</a></li>
+          <li><a href="https://audient.com/products/audio-interfaces/evo4/overview/" target="_blank" rel="noopener">Audient EVO 4</a> &amp; <a href="https://audient.com/products/audio-interfaces/evo8/overview/" target="_blank" rel="noopener">Audient EVO 8</a></li>
+          <li><a href="https://www.roland.com/global/products/aerophone_go/" target="_blank" rel="noopener">Roland AE-05 Aerophone GO</a></li>
+          <li><a href="https://usa.yamaha.com/products/musical_instruments/winds/digital_wind_instruments/yds-150/index.html" target="_blank" rel="noopener">Yamaha YDS-150 Digital Saxophone</a></li>
+        </ul>
+        <h3 class="glitch" data-text="Busking / Mobile Rig">Busking / Mobile Rig</h3>
+        <ul class="gear-list">
+          <li><a href="https://www.jbl.com/XTREME-4.html" target="_blank" rel="noopener">JBL Xtreme 4</a> — Portable PA / performance monitor</li>
+          <li><a href="https://www.jbl.com/CHARGE-6.html" target="_blank" rel="noopener">JBL Charge 6</a> — Backup / compact mobile playback</li>
+          <li><a href="https://www.jbl.com/CLIP-5.html" target="_blank" rel="noopener">JBL Clip 5</a> — Ultra-portable playback</li>
+         </ul>
+         <h3 class="glitch" data-text="Studio Monitors & Loudspeakers">Studio Monitors & Loudspeakers</h3>
+         <ul class="gear-list">
+           <li><a href="https://www.presonus.com/products/eris-e45-studio-monitor?srsltid=AfmBOooAs_t3DMvgoYAlfwgSFevCDOsquS5r2dgdNsFPvrODT0AK5DTL" target="_blank" rel="noopener">Presonus Eris 4.5 BT</a></li>
+           <li><a href="https://harbingerproaudio.com/wp-content/uploads/2023/09/Harbinger_V2112-V2115_Manual.pdf" target="_blank" rel="noopener">Harbinger 12" V2112 Powered Speakers</a></li>
+         </ul>
+         <h3 class="glitch" data-text="Microphones">Microphones</h3>
+         <ul class="gear-list">
+           <li><a href="https://zoomcorp.com/en/us/handheld-recorders/handheld-recorders/h1n-handy-recorder/" target="_blank" rel="noopener">Zoom H1n Handy Recorder</a></li>
+           <li><a href="https://www.logitechg.com/en-us/shop/p/yeti-premium-usb-microphone" target="_blank" rel="noopener">Blue Yeti USB Microphone</a></li>
+         </ul>
+         <h3 class="glitch" data-text="Interfaces & Mixers">Interfaces & Mixers</h3>
+         <ul class="gear-list">
+           <li><a href="https://www.behringer.com/series.html?category=R-BEHRINGER-UPHORIASERIES" target="_blank" rel="noopener">Behringer U-Phoria Series</a></li>
+           <li><a href="https://usa.yamaha.com/products/proaudio/mixers/mg_series_xu_model/index.html" target="_blank" rel="noopener">Yamaha MG Series Mixer</a></li>
+         </ul>
+        <h3 class="glitch" data-text="Bags & Cases">Bags & Cases</h3>
+        <ul class="gear-list">
+          <li><a href="https://www.511tactical.com/rush12-2-0-backpack.html?_gl=1*1b9n3g*_up*MQ..*_gs*MQ..&gclid=CjwKCAjwu9fHBhAWEiwAzGRC_38SdJYsvmgDhabL_GT9yZVqKZp_UFCWhsA3osNKFa6ndw65zOwfxBoCW3UQAvD_BwE&gbraid=0AAAAAD4yJCny8eJJ6x-TDcuKPcGWErcoM" target="_blank" rel="noopener">5.11 RUSH12 2.0 Backpack</a></li>
+        </ul>
+        </ul>
+        <h3 class="glitch" data-text="Software">Software</h3>
+        <ul class="gear-list">
+          <li><a href="https://new.steinberg.net/cubase/" target="_blank" rel="noopener">Cubase 12+</a> / <a href="https://new.steinberg.net/cubasis/" target="_blank" rel="noopener">Cubasis 3</a> — sequencing, MIDI routing, and sync</li>
+          <li><a href="https://www.ableton.com/en/live/" target="_blank" rel="noopener">Ableton Live</a> — performance, sound design, and loop composition</li>
+        </ul>
+      </section>
+
       <section id="contact" aria-label="Contact">
   <h2 class="glitch" data-text="Contact">Contact</h2>
   <p>✉️ Email: <a class="btn" href="mailto:contact@gonpulvo.com">contact@gonpulvo.com</a></p>
@@ -552,5 +617,32 @@
   <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 
   <!-- JSON-LD: Person -->
-  <script type="application/
+  <script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "gon pulvo",
+    "url": "https://www.gonpulvo.com",
+    "image": "https://epk.gonpulvo.com/assets/artistphoto.png",
+    "sameAs": [
+      "https://instagram.com/poruvo",
+      "https://x.com/gonpulvo",
+      "https://soundcloud.com/poruvo",
+      "https://github.com/poruvo",
+      "https://www.facebook.com/p/gon-pulvo-61579280514776/"
+    ],
+    "jobTitle": "Experimental Electronic Musician",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "gon pulvo",
+      "url": "https://www.gonpulvo.com"
+    },
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "Self-taught",
+      "url": "https://www.gonpulvo.com"
+    },
+    "description": "gon pulvo composes and performs experimental electronic music live, crossing hip hop, house, ambient, and jungle. His sets fuse gritty sound design with narrative motifs and reactive visuals, creating immersive performance environments. His recent work delves into psychological themes through recurring characters and looped dream sequences, unfolding across recorded releases and live shows."
+  }</script>
+</body>
+</html>
 
