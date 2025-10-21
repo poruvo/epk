@@ -1,0 +1,16 @@
+﻿{
+    "@context":  "https://schema.org",
+    "@type":  "MusicAlbum",
+    "name":  "Boogeyman",
+    "byArtist":  {
+                     "@type":  "Person",
+                     "name":  "gon pulvo"
+                 },
+    "description":  "A narrative-driven series exploring fear, identity, and recursion through experimental electronic music and reactive visuals.",
+    "genre":  [
+                  "Electronic",
+                  "Experimental",
+                  "Psychological Horror"
+              ],
+    "url":  "https://gonpulvo.bandcamp.com/album/boogeyman"
+}

@@ -1,0 +1,31 @@
+﻿{
+    "@context":  "https://schema.org",
+    "@type":  "Person",
+    "name":  "gon pulvo",
+    "alternateName":  "Stephon X. Jones",
+    "description":  "Experimental electronic musician - hip hop, house, ambient, jungle. Bass alchemist creating immersive sonic experiences.",
+    "url":  "https://poruvo.github.io/epk/",
+    "sameAs":  [
+                   "https://gonpulvo.bandcamp.com",
+                   "https://open.spotify.com/artist/4HAYtJiiO0XJlo79hS2ySI",
+                   "https://youtube.com/@gonpulvo",
+                   "https://instagram.com/poruvo",
+                   "https://x.com/gonpulvo",
+                   "https://soundcloud.com/poruvo",
+                   "https://github.com/poruvo",
+                   "https://linkedin.com/in/stephonxjones"
+               ],
+    "genre":  [
+                  "Electronic",
+                  "Hip Hop",
+                  "House",
+                  "Ambient",
+                  "Jungle",
+                  "Experimental"
+              ],
+    "worksFor":  {
+                     "@type":  "Organization",
+                     "name":  "Turnstone Compliance",
+                     "url":  "https://turnstonecompliance.com"
+                 }
+}
