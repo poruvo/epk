@@ -14,7 +14,7 @@ This repository contains the EPK for gon pulvo, featuring:
 
 ## Live Site
 
-Visit the EPK at: https://poruvo.github.io/epk/
+Visit the EPK at: https://.github.io//
 
 ## Projects
 

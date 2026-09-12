@@ -1,0 +1,58 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "name": "gon pulvo",
+      "alternateName": "Stephon X. Jones",
+      "url": "https://epk.gonpulvo.com/",
+      "image": "https://epk.gonpulvo.com/assets/artistphoto.png",
+      "sameAs": [
+        "https://gonpulvo.bandcamp.com",
+        "https://open.spotify.com/artist/4HAYtJiiO0XJlo79hS2ySI",
+        "https://youtube.com/@gonpulvo",
+        "https://instagram.com/poruvo",
+        "https://x.com/gonpulvo",
+        "https://soundcloud.com/poruvo",
+        "https://github.com/poruvo",
+        "https://www.facebook.com/p/gon-pulvo-61579280514776/",
+        "https://linkedin.com/in/stephonxjones",
+        "https://www.gonpulvo.com"
+      ],
+      "jobTitle": "Experimental Electronic Musician",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "gon pulvo",
+        "url": "https://www.gonpulvo.com"
+      },
+      "description": "gon pulvo composes and performs experimental electronic music live, crossing hip hop, house, ambient, and jungle. Sets fuse gritty sound design with narrative motifs and reactive visuals."
+    },
+    {
+      "@type": "WebSite",
+      "name": "gon pulvo — EPK",
+      "url": "https://epk.gonpulvo.com/",
+      "inLanguage": "en",
+      "publisher": {
+        "@type": "Person",
+        "name": "gon pulvo"
+      }
+    },
+    {
+      "@type": "MusicAlbum",
+      "name": "Boogeyman",
+      "byArtist": {
+        "@type": "Person",
+        "name": "gon pulvo"
+      },
+      "description": "A narrative-driven series exploring fear, identity, and recursion through experimental electronic music and reactive visuals.",
+      "genre": ["Electronic", "Experimental", "Psychological Horror"],
+      "url": "https://boogeyman.gonpulvo.com",
+      "image": "https://epk.gonpulvo.com/assets/gp-social.png",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://shop.gonpulvo.com",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  ]
+}
