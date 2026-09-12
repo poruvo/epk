@@ -856,6 +856,10 @@
           <span class="nav-icon">🚀</span>
           <span>Projects</span>
         </a>
+        <a class="nav-btn" href="#home8gain">
+          <span class="nav-icon">◒</span>
+          <span>HOME8GAIN</span>
+        </a>
         <a class="nav-btn" href="#contact">
           <span class="nav-icon">✉</span>
           <span>Contact</span>
@@ -889,6 +893,7 @@
     <a class="icon-link" href="#bio">👤 Bio</a>
     <a class="icon-link" href="#rider">🎛 Technical</a>
     <a class="icon-link" href="#projects">🚀 Projects</a>
+    <a class="icon-link" href="#home8gain">◒ HOME8GAIN</a>
     <a class="icon-link" href="#socials">🔗 Links</a>
     <a class="icon-link" href="#contact">✉ Contact</a>
     <a class="icon-link icon-link--bandcamp"
@@ -949,7 +954,7 @@
             <div class="booking-meta-item">
               <strong>Available For</strong>
               <ul>
-                <li>30–60 minute live electronic sets</li>
+                <li>30-60 minute live electronic sets</li>
                 <li>Electronic and experimental music bills</li>
                 <li>House, jungle, bass, and club-adjacent events</li>
                 <li>Galleries and art spaces</li>
@@ -1124,8 +1129,8 @@
               <li>1 power outlet</li>
               <li>Stereo DI or two 1/4-inch TRS connections into the venue system</li>
               <li>Venue PA appropriate for the room</li>
-              <li>Setup time: 15–20 minutes</li>
-              <li>Typical performance length: 30–60 minutes</li>
+              <li>Setup time: 15-20 minutes</li>
+              <li>Typical performance length: 30-60 minutes</li>
             </ul>
           </div>
           <div class="rider-card">
@@ -1183,7 +1188,25 @@
       </section>
 
       <!-- ====================================================
-           SECTION 7 — PROJECTS
+           SECTION 7 — HOME8GAIN
+      ==================================================== -->
+      <section id="home8gain" aria-labelledby="home8gain-heading">
+        <h2 id="home8gain-heading" class="glitch" data-text="HOME8GAIN">HOME8GAIN</h2>
+        <div class="contact-card">
+          <p class="subtitle">House Project</p>
+          <p class="bio-short">
+            <strong>HOME8GAIN</strong> is gon pulvo's house project: loose, repetitive, groove-focused electronic music built for movement, momentum, and the space between club structure and live experimentation.
+          </p>
+          <div class="btns" style="margin-top:16px">
+            <a class="btn btn--yellow" href="https://gonpulvo.bandcamp.com/album/home-8gain" target="_blank" rel="noopener">♫ Bandcamp</a>
+            <a class="btn btn--accent" href="https://open.spotify.com/album/7Dg05IjIEctspSLWzuAZrB" target="_blank" rel="noopener">🟢 Spotify</a>
+            <a class="btn" href="https://music.apple.com/us/album/home8gain-single/6802301724?l=es-MX" target="_blank" rel="noopener">🍎 Apple Music</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================
+           SECTION 8 — PROJECTS
       ==================================================== -->
       <section id="projects" aria-labelledby="projects-heading" class="print-hide">
         <h2 id="projects-heading" class="glitch" data-text="Featured Project">Featured Project</h2>
@@ -1220,7 +1243,7 @@
       </section>
 
       <!-- ====================================================
-           SECTION 7 — SOCIALS / LINKS
+         SECTION 9 — SOCIALS / LINKS
       ==================================================== -->
       <section id="socials" aria-labelledby="socials-heading" class="print-hide">
         <h2 id="socials-heading" class="glitch" data-text="Links">Links</h2>
@@ -1242,7 +1265,7 @@
       </section>
 
       <!-- ====================================================
-           SECTION 8 — CONTACT
+         SECTION 10 — CONTACT
       ==================================================== -->
       <section id="contact" aria-labelledby="contact-heading">
         <h2 id="contact-heading" class="glitch" data-text="Contact / Book">Contact / Book</h2>
@@ -1295,6 +1318,7 @@
       hamburger.addEventListener('click', () => {
         const open = mobileNav.classList.toggle('active');
         hamburger.setAttribute('aria-expanded', String(open));
+        hamburger.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
       });
 
       // Close on outside click
@@ -1302,6 +1326,7 @@
         if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
           mobileNav.classList.remove('active');
           hamburger.setAttribute('aria-expanded', 'false');
+          hamburger.setAttribute('aria-label', 'Open navigation menu');
         }
       });
 
@@ -1310,6 +1335,7 @@
         link.addEventListener('click', () => {
           mobileNav.classList.remove('active');
           hamburger.setAttribute('aria-expanded', 'false');
+          hamburger.setAttribute('aria-label', 'Open navigation menu');
         });
       });
     }
