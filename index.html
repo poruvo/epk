@@ -1,16 +1,16 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Boogeyman / General EPK — Serif + Redacted Dossier + Glitch/Noise -->
+  <!-- gon pulvo — Booking EPK -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>gon pulvo — Electronic Press Kit (EPK)</title>
-  <meta name="description" content="gon pulvo — experimental electronic musician. General EPK with bio, playlist, press assets, socials, and projects including Boogeyman." />
+  <title>gon pulvo — Booking EPK</title>
+  <meta name="description" content="gon pulvo — live experimental electronic performance by Stephon X. Jones. Booking EPK with live footage, set lengths, technical needs, and contact." />
   <link rel="canonical" href="https://epk.gonpulvo.com/" />
 
   <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="gon pulvo — Electronic Press Kit (♫ EPK ♫)" />
-  <meta property="og:description" content="Bio, visuals, playlist, credits, socials, and projects." />
+  <meta property="og:title" content="gon pulvo — Booking EPK" />
+  <meta property="og:description" content="Live experimental electronic performance by Stephon X. Jones, moving through hip hop, house, ambient, jungle, and bass music." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://epk.gonpulvo.com/" />
   <meta property="og:image" content="https://epk.gonpulvo.com/assets/gp-social.png" />
@@ -26,718 +26,1311 @@
   <meta name="theme-color" content="#0a0a0a">
 
   <style>
-    :root{
-      --bg:#0a0a0a;           /* paper */
-      --ink:#e7e7e7;          /* text */
-      --muted:#a3a3a3;        /* secondary */
-      --accent:#e11d48;       /* redaction line */
-      --accent2:#7f0a1a;      /* deep red */
-      --panel:#101013cc;      /* panel glass */
-      --rule:#ffffff1a;       /* thin borders */
+    /* ============================================================
+       TOKENS
+    ============================================================ */
+    :root {
+      --bg:           #0a0a0a;
+      --ink:          #e7e7e7;
+      --muted:        #a3a3a3;
+      --accent:       #e11d48;
+      --accent2:      #7f0a1a;
+      --accent-glow:  rgba(225, 29, 72, 0.25);
+      --panel:        #101013cc;
+      --surface:      #0d0d11;
+      --rule:         #ffffff1a;
+      --rule-strong:  #ffffff30;
       --serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0; background:var(--bg); color:var(--ink); font:17px/1.7 var(--serif);}
-
-    /* Background Image Support */
-    .background-image{
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      background-image:url('assets/city-bg.jpg');
-      background-size:cover;
-      background-position:center;
-      background-repeat:no-repeat;
-      background-attachment:fixed;
-      opacity:0.15;
-      z-index:-2;
-      filter:blur(1px) brightness(0.4);
+      --mono:  ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+               "Liberation Mono", "Courier New", monospace;
+      --radius:    12px;
+      --radius-sm:  6px;
     }
 
-    /* Alternative: Subtle pattern background */
-    .pattern-bg{
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      background-image:
-        radial-gradient(circle at 25% 25%, rgba(231, 29, 72, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, rgba(231, 29, 72, 0.05) 0%, transparent 50%);
-      z-index:-1;
-      pointer-events:none;
+    /* ============================================================
+       RESET
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 17px / 1.7 var(--serif);
+    }
+    h1, h2, h3, h4 {
+      font-family: var(--serif);
+      margin: .2em 0 .35em;
+      line-height: 1.1;
+    }
+    h1 { font-size: clamp(28px, 4.2vw, 44px); }
+    h2 { font-size: clamp(20px, 2.8vw, 28px); }
+    h3 { font-size: clamp(16px, 2vw, 20px); }
+    h4 { font-size: 1rem; }
+    p  { margin: 0 0 .75em; }
+    ul { margin: 0; padding-left: 1.2em; }
+    li { margin: .3em 0; }
+    img { display: block; max-width: 100%; }
+    a   { color: #fff; text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 3px;
     }
 
-    /* Link Styling */
-    a{
-      color:#ffffff;
-      text-decoration:none;
+    /* ============================================================
+       BACKGROUND LAYERS
+    ============================================================ */
+    .background-image {
+      position: fixed;
+      inset: 0;
+      background-image: url('assets/city-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      opacity: .15;
+      z-index: -2;
+      filter: blur(1px) brightness(.4);
     }
-    a:visited{
-      color:#ffffff;
-      text-decoration:none;
+    .noise, .scan {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
     }
-    a:hover{
-      color:#ffffff;
-      text-decoration:none;
+    .noise {
+      mix-blend-mode: soft-light;
+      opacity: .08;
+      filter: contrast(120%) brightness(80%);
+    }
+    .scan {
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,.05) 0px,
+        rgba(255,255,255,.02) 1px,
+        transparent 2px,
+        transparent 4px
+      );
+      opacity: .05;
     }
 
-    /* Professional section specific styling */
-    details a{
-      font-style:italic;
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(10,10,10,.97) 0%,
+        rgba(10,10,10,.85) 70%,
+        rgba(10,10,10,0) 100%
+      );
+      backdrop-filter: blur(8px);
+      padding: 12px 20px 22px;
+      z-index: 100;
+    }
+    .nav-container {
+      max-width: 1060px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .nav-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      padding: 7px 10px;
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-sm);
+      background: rgba(15,15,18,.85);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: border-color .2s, box-shadow .2s, transform .15s;
+      white-space: nowrap;
+    }
+    .nav-btn:hover {
+      border-color: var(--rule-strong);
+      box-shadow: 0 4px 12px rgba(0,0,0,.5);
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+    .nav-btn--cta {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(225,29,72,.08);
+    }
+    .nav-btn--cta:hover {
+      background: rgba(225,29,72,.15);
+      box-shadow: 0 4px 18px var(--accent-glow);
+    }
+    .nav-icon { font-size: 15px; line-height: 1; }
+    .nav-right {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .icon-link {
+      padding: 7px 11px;
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-sm);
+      background: rgba(15,15,18,.85);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: border-color .2s, box-shadow .2s;
+      white-space: nowrap;
+    }
+    .icon-link:hover {
+      border-color: var(--rule-strong);
+      box-shadow: 0 4px 12px rgba(0,0,0,.5);
+      text-decoration: none;
+    }
+    .icon-link--bandcamp { border-color: var(--accent); color: var(--accent); }
+    .icon-link--cta {
+      border-color: var(--accent) !important;
+      color: var(--accent) !important;
+      background: rgba(225,29,72,.08);
     }
 
-    /* Layout */
-    main{min-height:100dvh; display:grid; place-items:start center; padding:clamp(16px,3vw,32px)}
-    .wrap{width:min(1060px,100%); background:var(--panel); border:1px solid var(--rule); border-radius:16px; padding:clamp(16px,3.5vw,36px); position:relative; overflow:hidden; box-shadow:0 40px 90px #00000080}
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 10px;
+      cursor: pointer;
+      background: rgba(15,15,18,.9);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-sm);
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      z-index: 101;
+    }
+    .hamburger span {
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+      display: block;
+      transition: all .3s;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 58px;
+      right: 12px;
+      background: rgba(13,13,17,.97);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 12px;
+      gap: 8px;
+      flex-direction: column;
+      z-index: 100;
+      box-shadow: 0 8px 28px rgba(0,0,0,.7);
+      min-width: 200px;
+    }
+    .mobile-menu.active { display: flex; }
+    .mobile-menu .icon-link { font-size: 13px; padding: 9px 14px; }
 
-    /* Mobile: more transparent card to show background */
-    @media (max-width:768px){ 
-      .wrap{ 
-        background:rgba(16,16,19,0.40); 
-        backdrop-filter:blur(12px);
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ============================================================
+       LAYOUT
+    ============================================================ */
+    main {
+      min-height: 100dvh;
+      display: grid;
+      place-items: start center;
+      padding: clamp(16px, 3vw, 32px);
+      padding-top: calc(clamp(16px, 3vw, 32px) + 72px);
+      position: relative;
+      z-index: 1;
+    }
+    @media (max-width: 768px) {
+      main { padding-top: clamp(16px, 3vw, 32px); }
+    }
+    .wrap {
+      width: min(1060px, 100%);
+      background: var(--panel);
+      border: 1px solid var(--rule);
+      border-radius: 16px;
+      padding: clamp(16px, 3.5vw, 40px);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 40px 90px #00000080;
+    }
+    @media (max-width: 768px) {
+      .wrap {
+        background: rgba(16,16,19,.45);
+        backdrop-filter: blur(12px);
       }
-      .background-image{
-        opacity:0.25;
-        filter:blur(0px) brightness(0.5);
-      }
-    }
-
-    header{display:grid; grid-template-columns:1fr; gap:16px; align-items:center}
-    @media (min-width:900px){ header{ grid-template-columns:200px 1fr 200px; gap:28px } }
-
-    .logo{width:100%; max-width:200px; aspect-ratio:1/1; object-fit:cover; border-radius:12px; box-shadow:0 12px 28px #0009}
-    .artist-photo{
-  width: 100%;
-  max-width: 200px;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  object-position: 75% 50%;  /* 👈 adjust this line to center your face */
-  border-radius: 12px;
-  box-shadow: 0 12px 28px #0009;
-  filter: grayscale(20%) contrast(110%);
-  transform: translateX(20px);
-}
-    
-    /* Mobile layout - stack vertically */
-    @media (max-width:899px){ 
-      header{ 
-        grid-template-columns:1fr; 
-        text-align:center;
-      }
-      .header-images{
-        display:flex;
-        gap:16px;
-        justify-content:center;
-        flex-wrap:wrap;
-      }
-      .logo, .artist-photo{
-        max-width:150px;
-      }
-      .artist-photo{
-        transform:none; /* Reset offset on mobile */
-      }
-    }
-    h1,h2,h3{font-family:var(--serif); margin:.2em 0 .35em}
-    h1{font-size:clamp(28px,4.2vw,44px)}
-    h2{font-size:clamp(20px,2.8vw,28px)}
-    .sub{color:var(--muted); font-family:var(--mono); font-size:.95rem}
-  .subtitle{color:var(--muted); font-family:var(--mono); font-size:1rem; text-transform:uppercase; letter-spacing:.08em; margin:2px 0 8px}
-
-    .stamp{display:inline-block; font-family:var(--mono); letter-spacing:.12em; text-transform:uppercase; padding:.35em .55em; border:1px solid var(--accent); color:var(--accent); border-radius:4px; transform:rotate(-2deg); box-shadow:0 0 0 1px #000 inset}
-
-    .player{display:grid; place-items:center; gap:8px; text-align:center}
-    .player iframe{width:560px; max-width:100%; height:315px; border:0; border-radius:12px; box-shadow:0 12px 30px #000a}
-
-    section{border-top:1px dashed var(--rule); padding-top:20px; margin-top:26px}
-    section:first-of-type{border-top:0; padding-top:0; margin-top:0}
-
-    details{background:#0d0d11; border:1px solid var(--rule); border-radius:12px; padding:14px 16px; margin:14px 0}
-    details>summary{cursor:pointer; list-style:none; font-family:var(--mono); font-weight:600}
-    details>summary::-webkit-details-marker{display:none}
-    details[open]{box-shadow:0 16px 36px #0007}
-
-    .redact{ position:relative; color:transparent; }
-    .redact::after{ content:"████████████████"; letter-spacing:.08em; background:linear-gradient(0deg, #000, #000); color:#000; border-radius:2px; padding:.06em .15em; }
-    .reveal .redact{ color:var(--ink); }
-    .reveal .redact::after{ content:none; }
-
-    .glitch{ position:relative; display:inline-block; }
-    .glitch::before, .glitch::after{ content:attr(data-text); position:absolute; left:0; top:0; width:100%; pointer-events:none; opacity:.0; }
-    .glitch:hover::before{ transform:translate(1px,-1px); color:var(--accent); opacity:.35; }
-    .glitch:hover::after{ transform:translate(-1px,1px); color:#66f; opacity:.25; }
-  .glitch a{ color:inherit; text-decoration:none }
-  .glitch a:hover{ text-decoration:underline; text-underline-offset:3px }
-
-    .noise, .scan{ position:fixed; inset:0; pointer-events:none; z-index:0 }
-    .noise{ mix-blend-mode:soft-light; opacity:.08; filter:contrast(120%) brightness(80%); }
-    .scan{ background: repeating-linear-gradient( to bottom, rgba(255,255,255,.05) 0px, rgba(255,255,255,.02) 1px, transparent 2px, transparent 4px ); opacity:.05 }
-
-    .wrap{ position:relative; z-index:1 }
-
-    /* Static Navigation */
-    nav{ 
-      position:fixed; 
-      top:0; 
-      left:0; 
-      right:0; 
-      background: linear-gradient(180deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.8) 70%, rgba(10,10,10,0) 100%);
-      backdrop-filter:blur(8px); 
-      border-bottom: none;
-      padding:16px 20px 24px; 
-      z-index:100; 
-    }
-    .nav-container{ 
-      max-width:1200px; 
-      margin:0 auto; 
-      display:flex; 
-      align-items:center; 
-      justify-content:space-between; 
-      gap:16px; 
-    }
-    .nav-links{ 
-      display:flex; 
-      gap:12px; 
-      flex-wrap:wrap; 
-    }
-    .nav-btn{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:4px;
-      padding:8px 12px;
-      border:1px solid var(--rule);
-      border-radius:8px;
-      background:rgba(15,15,18,0.8);
-      color:var(--ink);
-      text-decoration:none;
-      font-family:var(--mono);
-      font-size:11px;
-      font-weight:600;
-      transition:all 0.2s ease;
-      min-width:50px;
-    }
-    .nav-btn:hover{
-      border-color:#ffffff3a;
-      box-shadow:0 4px 12px rgba(0,0,0,0.4);
-      transform:translateY(-1px);
-    }
-    .nav-icon{
-      font-size:18px;
-      line-height:1;
-    }
-    .nav-icons{ 
-      display:flex; 
-      gap:8px; 
-      align-items:center; 
-    }
-    .icon-link{ 
-      padding:8px 12px; 
-      border:1px solid var(--rule); 
-      border-radius:6px; 
-      background:rgba(15,15,18,0.8); 
-      color:var(--ink); 
-      text-decoration:none; 
-      font-family:var(--mono); 
-      font-size:14px; 
-      font-weight:600; 
-      transition:all 0.2s ease;
-    }
-    .icon-link:hover{ 
-      border-color:#ffffff3a; 
-      box-shadow:0 4px 12px rgba(0,0,0,0.4); 
-    }
-    .icon-link--bandcamp{ 
-      border-color:var(--accent); 
-      color:var(--accent); 
-    }
-
-    /* Adjust main content to account for fixed nav */
-    main{ 
-      min-height:100dvh; 
-      display:grid; 
-      place-items:start center; 
-      padding:clamp(16px,3vw,32px); 
-      padding-top:calc(clamp(16px,3vw,32px) + 60px); 
-    }
-
-    .btns{ display:flex; flex-wrap:wrap; gap:10px; margin:.5rem 0 0 }
-    .btn{ display:inline-flex; align-items:center; gap:.5em; font-family:var(--mono); font-weight:600; padding:.55em .8em; border-radius:8px; border:1px solid var(--rule); background:#0f0f12; color:var(--ink); text-decoration:none }
-    .btn:hover{ border-color:#ffffff3a; box-shadow:0 8px 22px #0007 }
-    .btn--accent{ border-color:var(--accent); color:var(--accent) }
-    .btn--yellow{ border-color:#fbbf24; color:#fbbf24; background:#1f1611; }
-    .btn--yellow:hover{ border-color:#fcd34d; box-shadow:0 8px 22px rgba(251,191,36,0.3); }
-
-    /* Mobile Hamburger Menu */
-    .hamburger{
-      display:none;
-      flex-direction:column;
-      gap:4px;
-      padding:10px;
-      cursor:pointer;
-      background:rgba(15,15,18,0.8);
-      border:1px solid var(--rule);
-      border-radius:6px;
-      position:fixed;
-      top:12px;
-      right:12px;
-      z-index:101;
-    }
-    .hamburger span{
-      width:24px;
-      height:2px;
-      background:var(--ink);
-      transition:all 0.3s ease;
-    }
-    .mobile-menu{
-      display:none;
-      position:fixed;
-      top:60px;
-      right:12px;
-      background:rgba(15,15,18,0.95);
-      border:1px solid var(--rule);
-      border-radius:8px;
-      padding:12px;
-      gap:8px;
-      flex-direction:column;
-      z-index:100;
-      box-shadow:0 8px 24px rgba(0,0,0,0.5);
-    }
-    .mobile-menu.active{
-      display:flex;
-    }
-
-    /* Responsive navigation */
-    @media (max-width:768px){ 
-      nav{
-        display:none;
-      }
-      .hamburger{
-        display:flex;
-      }
-      .mobile-menu .icon-link{
-        padding:8px 12px;
-        font-size:13px;
-      }
-      .btns{
-        gap:8px;
-      }
-      .btn{
-        padding:.45em .65em;
-        font-size:13px;
-      }
-      main{ 
-        padding-top:clamp(16px,3vw,32px); 
+      .background-image {
+        opacity: .25;
+        filter: blur(0px) brightness(.5);
       }
     }
-
-    .grid{ display:grid; gap:16px }
-    @media (min-width:900px){ .grid{ grid-template-columns: 1fr 1fr } }
-
-    footer{ margin-top:28px; text-align:center; color:var(--muted); font-family:var(--mono) }
-
-    @media print{
-      .noise,.scan{display:none}
-      .wrap{box-shadow:none; background:#fff; color:#000}
-      body{background:#fff}
-      a{color:#000}
+    section {
+      border-top: 1px dashed var(--rule);
+      padding-top: 28px;
+      margin-top: 32px;
     }
 
+    /* ============================================================
+       UTILITIES
+    ============================================================ */
+    .sub {
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .9rem;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin: 0 0 6px;
+    }
+    .stamp {
+      display: inline-block;
+      font-family: var(--mono);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .28em .5em;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      border-radius: 4px;
+      font-size: .72rem;
+      transform: rotate(-2deg);
+    }
+    .glitch { position: relative; display: inline-block; }
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0; top: 0;
+      width: 100%;
+      pointer-events: none;
+      opacity: 0;
+    }
+    .glitch:hover::before { transform: translate(1px,-1px); color: var(--accent); opacity: .35; }
+    .glitch:hover::after  { transform: translate(-1px,1px); color: #66f; opacity: .25; }
+
+    /* Buttons */
+    .btns { display: flex; flex-wrap: wrap; gap: 10px; margin: .75rem 0 0; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .4em;
+      font-family: var(--mono);
+      font-weight: 600;
+      font-size: .875rem;
+      padding: .55em .85em;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--rule);
+      background: #0f0f12;
+      color: var(--ink);
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color .2s, box-shadow .2s, transform .15s, background-color .2s;
+    }
+    .btn:hover {
+      border-color: var(--rule-strong);
+      box-shadow: 0 6px 18px #0009;
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+    .btn--accent { border-color: var(--accent); color: var(--accent); background: rgba(225,29,72,.06); }
+    .btn--accent:hover { box-shadow: 0 6px 22px var(--accent-glow); }
+    .btn--primary {
+      border-color: var(--accent);
+      color: #fff;
+      background: var(--accent);
+      font-size: 1rem;
+      padding: .65em 1.3em;
+    }
+    .btn--primary:hover {
+      background: #c2173e;
+      box-shadow: 0 8px 26px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+    .btn--secondary {
+      border-color: var(--rule-strong);
+      color: var(--ink);
+      background: rgba(255,255,255,.04);
+      font-size: 1rem;
+      padding: .65em 1.3em;
+    }
+    .btn--secondary:hover { border-color: #ffffff50; }
+    .btn--yellow { border-color: #fbbf24; color: #fbbf24; background: #1f1611; }
+    .btn--yellow:hover { border-color: #fcd34d; box-shadow: 0 6px 20px rgba(251,191,36,.25); }
+
+    /* ============================================================
+       SITE HEADER
+    ============================================================ */
+    header {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 24px;
+      align-items: center;
+    }
+    @media (max-width: 899px) {
+      header {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .header-images {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+    }
+    .logo {
+      width: 100%;
+      max-width: 160px;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: 0 12px 28px #0009;
+    }
+    .artist-photo {
+      width: 100%;
+      max-width: 160px;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      object-position: 75% 50%;
+      border-radius: var(--radius);
+      box-shadow: 0 12px 28px #0009;
+      filter: grayscale(20%) contrast(110%);
+    }
+    @media (max-width: 899px) {
+      .logo, .artist-photo { max-width: 130px; }
+    }
+
+    /* ============================================================
+       BOOKING HERO
+    ============================================================ */
+    .booking-hero {
+      background: linear-gradient(135deg, rgba(225,29,72,.07) 0%, rgba(10,10,10,0) 65%);
+      border: 1px solid rgba(225,29,72,.22);
+      border-radius: var(--radius);
+      padding: clamp(20px, 3vw, 36px);
+      margin-top: 24px;
+    }
+    .booking-hero-lead {
+      font-size: clamp(1rem, 1.4vw, 1.15rem);
+      line-height: 1.65;
+      color: var(--ink);
+      max-width: 66ch;
+      margin-bottom: 1.25em;
+    }
+    .booking-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin: 1.25em 0;
+    }
+    @media (max-width: 560px) {
+      .booking-meta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .booking-meta-item {
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+    }
+    .booking-meta-item strong {
+      display: block;
+      font-family: var(--mono);
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      color: var(--accent);
+      margin-bottom: .5em;
+    }
+    .booking-meta-item ul {
+      margin: 0;
+      padding-left: 1.1em;
+      color: var(--ink);
+      font-size: .95rem;
+    }
+    .booking-meta-item p {
+      margin: 0;
+      font-size: .95rem;
+      color: var(--ink);
+    }
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 1.25em;
+      align-items: center;
+    }
+
+    /* ============================================================
+       WATCH / LISTEN
+    ============================================================ */
+    .watch-grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+    }
+    .video-slot {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .video-slot iframe {
+      width: 100%;
+      aspect-ratio: 16/9;
+      display: block;
+      border: 0;
+    }
+    .video-placeholder {
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(255,255,255,.02);
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .85rem;
+      text-align: center;
+      padding: 20px;
+    }
+    .video-placeholder-icon { font-size: 2.25rem; opacity: .35; }
+    .video-slot-label {
+      padding: 9px 14px;
+      font-family: var(--mono);
+      font-size: .75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      border-top: 1px solid var(--rule);
+    }
+    .playlist-embed {
+      margin-top: 18px;
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .playlist-embed iframe {
+      width: 100%;
+      aspect-ratio: 16/9;
+      display: block;
+      border: 0;
+    }
+
+    /* ============================================================
+       BOOKING DETAILS CARD
+    ============================================================ */
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: clamp(16px, 2.5vw, 28px);
+    }
+    .info-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+      gap: 20px;
+    }
+    .info-col strong {
+      display: block;
+      font-family: var(--mono);
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      color: var(--accent);
+      margin-bottom: .5em;
+    }
+    .info-col ul {
+      color: var(--ink);
+      font-size: .95rem;
+      padding-left: 1.1em;
+    }
+    .info-col p {
+      font-size: .95rem;
+      color: var(--ink);
+      margin: 0;
+    }
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .tag-list li {
+      font-family: var(--mono);
+      font-size: .78rem;
+      padding: .25em .65em;
+      border: 1px solid var(--rule-strong);
+      border-radius: 100px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* ============================================================
+       RIDER / TECHNICAL INFO
+    ============================================================ */
+    .rider-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+      gap: 18px;
+      margin-top: 16px;
+    }
+    .rider-card {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+    }
+    .rider-card h4 {
+      font-family: var(--mono);
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      color: var(--accent);
+      margin: 0 0 .75em;
+    }
+    .rider-card ul {
+      color: var(--ink);
+      font-size: .95rem;
+      padding-left: 1.1em;
+    }
+    .rider-card li { margin: .35em 0; }
+
+    /* ============================================================
+       BIO
+    ============================================================ */
+    .bio-short {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      max-width: 68ch;
+    }
+    .bio-expand {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      margin-top: 16px;
+    }
+    .bio-expand summary {
+      cursor: pointer;
+      list-style: none;
+      font-family: var(--mono);
+      font-weight: 600;
+      font-size: .9rem;
+      color: var(--muted);
+    }
+    .bio-expand summary::-webkit-details-marker { display: none; }
+    .bio-expand[open] summary { color: var(--ink); margin-bottom: .75em; }
+    .bio-expand p { margin-top: .75em; max-width: 68ch; }
+
+    /* ============================================================
+       PROJECTS / DETAILS
+    ============================================================ */
+    details {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      margin: 12px 0;
+    }
+    details > summary {
+      cursor: pointer;
+      list-style: none;
+      font-family: var(--mono);
+      font-weight: 600;
+    }
+    details > summary::-webkit-details-marker { display: none; }
+    details[open] { box-shadow: 0 14px 32px #0006; }
+    details > *:not(summary) { margin-top: .75em; }
+
+    /* ============================================================
+       GEAR LIST
+    ============================================================ */
     .gear-list {
       list-style: none;
-      margin: 0;
+      margin: .4em 0 1em;
       padding: 0;
     }
     .gear-list li {
-      margin: 0.25em 0;
+      margin: .3em 0;
       font-family: var(--mono);
-      font-size: 0.95rem;
+      font-size: .9rem;
     }
     .gear-list a {
       color: var(--accent);
       text-decoration: none;
       border-bottom: 1px dashed var(--accent);
-      transition: color 0.2s ease, border-color 0.2s ease;
+      transition: color .2s, border-color .2s;
     }
-    .gear-list a:hover {
-      color: #fff;
-      border-color: #fff;
+    .gear-list a:hover { color: #fff; border-color: #fff; text-decoration: none; }
+    .gear-cat {
+      font-family: var(--mono);
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      color: var(--muted);
+      margin: 1em 0 .35em;
+    }
+
+    /* ============================================================
+       CONTACT
+    ============================================================ */
+    .contact-card {
+      background: linear-gradient(135deg, rgba(225,29,72,.06) 0%, rgba(10,10,10,0) 70%);
+      border: 1px solid rgba(225,29,72,.22);
+      border-radius: var(--radius);
+      padding: clamp(20px, 3vw, 32px);
+    }
+    .contact-card address {
+      font-style: normal;
+      margin: 12px 0;
+    }
+    .contact-card address p { margin: .4em 0; font-size: 1rem; }
+    .contact-note {
+      font-size: .9rem;
+      color: var(--muted);
+      font-family: var(--mono);
+      margin: 16px 0 0;
+      max-width: 60ch;
+      line-height: 1.55;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      margin-top: 36px;
+      text-align: center;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .85rem;
+    }
+    .footer-cta {
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* ============================================================
+       PRINT ONE-SHEET
+       Visible: Hero, Booking Details, Short Bio, Rider, Contact
+       Hidden: Nav, FX overlays, Watch, Projects, Socials, About
+    ============================================================ */
+    @media print {
+      .noise, .scan, .background-image,
+      nav, .hamburger, .mobile-menu,
+      .print-hide, footer { display: none !important; }
+
+      * {
+        color: #000 !important;
+        background: transparent !important;
+        border-color: #bbb !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+      }
+      body { background: #fff !important; font-size: 10.5pt; }
+      h1 { font-size: 22pt; }
+      h2 { font-size: 13pt; border-bottom: 1px solid #ccc; padding-bottom: 4px; }
+      h3 { font-size: 11pt; }
+      h4 { font-size: 10pt; }
+      p, li { font-size: 10pt; }
+
+      main { padding: 0; display: block; }
+      .wrap {
+        border: none;
+        border-radius: 0;
+        padding: 0;
+        background: #fff !important;
+        box-shadow: none !important;
+        width: 100%;
+      }
+      section { border: none !important; margin-top: 16pt; padding-top: 0; }
+
+      .booking-hero { border: 1px solid #ccc; padding: 12pt; border-radius: 4px; }
+      .booking-meta-grid { gap: 8pt; }
+      .booking-meta-item { border: 1px solid #ccc; padding: 8pt; }
+      .info-card { border: 1px solid #ccc; padding: 10pt; }
+      .info-card-grid { gap: 10pt; }
+      .rider-grid { gap: 8pt; }
+      .rider-card { border: 1px solid #ccc; padding: 8pt; }
+      .tag-list li { border: 1px solid #999; }
+
+      .btn { display: none !important; }
+      .btn--primary { display: inline-block !important; border: 2px solid #000 !important; color: #000 !important; padding: 4pt 10pt !important; }
+
+      details { border: 1px solid #ccc; }
+      details > summary { display: none; }
+
+      /* Hide non-booking sections when printing */
+      #watch, #projects, #socials,
+      .bio-expand { display: none !important; }
+    }
+
+    /* ============================================================
+       REDUCED MOTION
+    ============================================================ */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
     }
   </style>
 </head>
 <body>
-  <svg width="0" height="0" style="position:absolute">
+
+  <!-- SVG Noise Filter -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <filter id="noiseFilter">
-      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" stitchTiles="stitch" />
-      <feColorMatrix type="saturate" values="0" />
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
     </filter>
   </svg>
-  <!-- Background Options (uncomment one) -->
-  <div class="background-image"></div>
-  <!-- <div class="pattern-bg"></div> -->
-  
-  <div class="noise" style="filter: url(#noiseFilter);"></div>
+
+  <div class="background-image" aria-hidden="true"></div>
+  <div class="noise" style="filter:url(#noiseFilter);" aria-hidden="true"></div>
   <div class="scan" aria-hidden="true"></div>
 
-  <nav aria-label="site navigation">
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav aria-label="Site navigation">
     <div class="nav-container">
       <div class="nav-links">
-        <a class="nav-btn" href="#playlist">
-          <span class="nav-icon">🎵</span>
-          <span>Playlist</span>
+        <a class="nav-btn nav-btn--cta" href="#contact">
+          <span class="nav-icon">📩</span>
+          <span>Book</span>
         </a>
-        <a class="nav-btn" href="#socials">
-          <span class="nav-icon">📱</span>
-          <span>Socials</span>
+        <a class="nav-btn" href="#watch">
+          <span class="nav-icon">▶</span>
+          <span>Watch</span>
+        </a>
+        <a class="nav-btn" href="#booking-details">
+          <span class="nav-icon">📋</span>
+          <span>Details</span>
         </a>
         <a class="nav-btn" href="#bio">
           <span class="nav-icon">👤</span>
           <span>Bio</span>
+        </a>
+        <a class="nav-btn" href="#rider">
+          <span class="nav-icon">🎛</span>
+          <span>Technical</span>
         </a>
         <a class="nav-btn" href="#projects">
           <span class="nav-icon">🚀</span>
           <span>Projects</span>
         </a>
         <a class="nav-btn" href="#contact">
-          <span class="nav-icon">✉️</span>
+          <span class="nav-icon">✉</span>
           <span>Contact</span>
         </a>
       </div>
-      <div class="nav-icons">
-        <a class="icon-link icon-link--bandcamp" href="https://gonpulvo.bandcamp.com" target="_blank" rel="noopener" title="Bandcamp">♫ Bandcamp</a>
-        <a class="icon-link" href="https://shop.gonpulvo.com" target="_blank" rel="noopener" title="Shop">🛒 SHOP</a>
-        <a class="icon-link" href="https://gonpulvo.com" target="_blank" rel="noopener" title="Official Website">🌐 WEB</a>
+      <div class="nav-right">
+        <a class="icon-link icon-link--bandcamp"
+           href="https://gonpulvo.bandcamp.com/album/boogeyman"
+           target="_blank" rel="noopener">♫ Bandcamp</a>
+        <a class="icon-link"
+           href="https://shop.gonpulvo.com"
+           target="_blank" rel="noopener">🛒 Shop</a>
+        <a class="icon-link"
+           href="https://gonpulvo.com"
+           target="_blank" rel="noopener">🌐 Web</a>
       </div>
     </div>
   </nav>
 
-  <!-- Mobile Hamburger Menu -->
-  <div class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('active')">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-  <div class="mobile-menu">
-    <a class="icon-link icon-link--bandcamp" href="https://gonpulvo.bandcamp.com" target="_blank" rel="noopener" title="Bandcamp">♫ Bandcamp</a>
-    <a class="icon-link" href="https://shop.gonpulvo.com" target="_blank" rel="noopener" title="Shop">🛒 SHOP</a>
-    <a class="icon-link" href="https://gonpulvo.com" target="_blank" rel="noopener" title="Official Website">🌐 WEB</a>
+  <!-- Mobile Hamburger -->
+  <button class="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="mobile-menu" id="mobile-nav" role="navigation" aria-label="Mobile navigation">
+    <a class="icon-link icon-link--cta" href="#contact">📩 Book gon pulvo</a>
+    <a class="icon-link" href="#watch">▶ Watch / Listen</a>
+    <a class="icon-link" href="#booking-details">📋 Booking Details</a>
+    <a class="icon-link" href="#bio">👤 Bio</a>
+    <a class="icon-link" href="#rider">🎛 Technical</a>
+    <a class="icon-link" href="#projects">🚀 Projects</a>
+    <a class="icon-link" href="#socials">🔗 Links</a>
+    <a class="icon-link" href="#contact">✉ Contact</a>
+    <a class="icon-link icon-link--bandcamp"
+       href="https://gonpulvo.bandcamp.com/album/boogeyman"
+       target="_blank" rel="noopener">♫ Bandcamp</a>
+    <a class="icon-link"
+       href="https://shop.gonpulvo.com"
+       target="_blank" rel="noopener">🛒 Shop</a>
   </div>
 
+  <!-- ============================================================
+       MAIN CONTENT
+  ============================================================ -->
   <main>
-    <article class="wrap reveal" itemscope itemtype="https://schema.org/Person">
+    <article class="wrap" itemscope itemtype="https://schema.org/MusicGroup">
+
+      <!-- ====================================================
+           SITE HEADER — Artist Identity
+      ==================================================== -->
       <header>
         <div class="header-images">
-          <img src="assets/gp-logo-320.png?v=2" alt="gon pulvo logo" class="logo" />
+          <img src="assets/gp-logo-320.png?v=2"
+               alt="gon pulvo logo"
+               class="logo"
+               width="160" height="160" />
         </div>
         <div>
-          <h1 class="glitch" data-text="gon pulvo — bass alchemist"><a href="https://www.gonpulvo.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit; padding:0 .25em; border-radius:6px; background:rgba(255,255,255,0.02); box-shadow:0 0 0 rgba(225,29,72,0); transition:box-shadow .2s ease, background-color .2s ease;" onmouseover="this.style.boxShadow='0 0 16px rgba(225,29,72,0.35), 0 0 2px rgba(225,29,72,0.8)'; this.style.background='rgba(225,29,72,0.08)';" onmouseout="this.style.boxShadow='0 0 0 rgba(0,0,0,0)'; this.style.background='rgba(255,255,255,0.02)';">gon pulvo — bass alchemist</a></h1>
-          <p class="subtitle">Experimental electronic music producer</p>
-          <p class="sub">Experimental electronic musician — hip hop, house, ambient, jungle.</p>
-          <div class="btns">
-            <a class="btn btn--accent" href="https://gonpulvo.bandcamp.com/album/boogeyman" target="_blank" rel="noopener">🎵 Bandcamp</a>
-            <a class="btn" href="https://open.spotify.com/artist/4HAYtJiiO0XJlo79hS2ySI" target="_blank" rel="noopener">🟢 Spotify</a>
-            <a class="btn" href="https://music.apple.com/us/artist/gon-pulvo/1333207681" target="_blank" rel="noopener">🍎 Apple Music</a>
-            <a class="btn" href="https://youtube.com/@gonpulvo" target="_blank" rel="noopener">▶️ YouTube</a>
-            <a class="btn btn--accent" href="https://play.gonpulvo.com" target="_blank" rel="noopener">🎧 Listening Room</a>
-            <a class="btn" href="https://www.gonpulvo.com" target="_blank" rel="noopener">🌐 Website</a>
-            <a class="btn btn--yellow" href="https://shop.gonpulvo.com" target="_blank" rel="noopener">🛒 Shop</a>
-            <a class="btn" href="https://instagram.com/poruvo" target="_blank" rel="noopener">📷 Instagram</a>
-            <a class="btn" href="https://x.com/gonpulvo" target="_blank" rel="noopener">✖️ X / Twitter</a>
-            <a class="btn" href="https://soundcloud.com/poruvo" target="_blank" rel="noopener">☁️ SoundCloud</a>
-            <a class="btn" href="https://github.com/poruvo" target="_blank" rel="noopener">⚡ GitHub</a>
-          </div>
+          <p class="subtitle">Electronic Press Kit</p>
+          <h1 class="glitch" data-text="gon pulvo" itemprop="name">gon pulvo</h1>
+          <p class="sub">Experimental electronic &middot; hip hop &middot; house &middot; ambient &middot; jungle</p>
         </div>
         <div class="header-images">
-          <img src="assets/artistphoto.png" alt="gon pulvo artist photo" class="artist-photo" itemprop="image" />
+          <img src="assets/artistphoto.png"
+               alt="gon pulvo — Stephon X. Jones"
+               class="artist-photo"
+               itemprop="image"
+               width="160" height="160" />
         </div>
       </header>
 
-      <section id="playlist" aria-label="Featured Playlist">
-        <h2 class="glitch" data-text="Featured Playlist">Featured Playlist</h2>
-        <div class="player">
-          <iframe src="https://www.youtube.com/embed/videoseries?list=PLplE2hKEV9b3xdf0F25YqJTqeH0WISWVn" title="gon pulvo — Playlist" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      <!-- ====================================================
+           SECTION 1 — BOOKING HERO
+      ==================================================== -->
+      <section aria-labelledby="booking-hero-heading">
+        <div class="booking-hero">
+          <p class="subtitle">Live Electronic Performance &amp; Booking</p>
+          <h2 id="booking-hero-heading" class="glitch" data-text="gon pulvo — live experimental electronic">
+            gon pulvo — live experimental electronic
+          </h2>
+          <p class="booking-hero-lead">
+            gon pulvo is the experimental electronic project of Stephon X. Jones, moving between hip hop, house, ambient, jungle, bass music, and whatever else fits the idea. Live sets are performed and reshaped in real time on hardware, with arrangements, transitions, effects, texture, and dynamics manipulated throughout the performance.
+          </p>
+
+          <div class="booking-meta-grid">
+            <div class="booking-meta-item">
+              <strong>Available For</strong>
+              <ul>
+                <li>30–60 minute live electronic sets</li>
+                <li>Electronic and experimental music bills</li>
+                <li>House, jungle, bass, and club-adjacent events</li>
+                <li>Galleries and art spaces</li>
+                <li>DIY shows</li>
+                <li>Festivals and art walks</li>
+                <li>Mixed-genre bills</li>
+                <li>Electronic support slots</li>
+                <li>Public-space and unconventional performance settings</li>
+              </ul>
+            </div>
+            <div class="booking-meta-item">
+              <strong>Simple Setup</strong>
+              <ul>
+                <li>Table or stable performance surface</li>
+                <li>Power outlet</li>
+                <li>Stereo DI or two 1/4-inch TRS inputs into the venue system</li>
+              </ul>
+            </div>
+            <div class="booking-meta-item">
+              <strong>Optional</strong>
+              <p>Audio-reactive visuals are available with advance coordination. Projector or display with HDMI input required.</p>
+            </div>
+            <div class="booking-meta-item">
+              <strong>Location</strong>
+              <p>Based in Washington's Puget Sound region. Available for Pacific Northwest and regional bookings, with travel possible by arrangement.</p>
+            </div>
+          </div>
+
+          <div class="hero-cta-group">
+            <a class="btn btn--primary" href="#contact">📩 Book gon pulvo</a>
+            <a class="btn btn--secondary" href="#watch">▶ Watch / Listen</a>
+            <button class="btn print-hide" onclick="window.print()">🖨 Print One-Sheet</button>
+          </div>
         </div>
       </section>
 
-      <section id="socials" aria-label="Social links">
-        <h2 class="glitch" data-text="Social Links">Social Links</h2>
-        <p class="sub">Find my music and reach out below. For booking or collaboration, email is best; socials work too.</p>
-        <div class="btns">
-          <a class="btn btn--accent" href="https://gonpulvo.bandcamp.com/album/boogeyman" target="_blank" rel="noopener">🎵 Bandcamp</a>
+      <!-- ====================================================
+           SECTION 2 — WATCH / LISTEN / LIVE PROOF
+      ==================================================== -->
+      <section id="watch" aria-labelledby="watch-heading" class="print-hide">
+        <h2 id="watch-heading" class="glitch" data-text="Watch / Listen">Watch / Listen</h2>
+        <p class="sub" style="margin-bottom:1.25em">Live performance footage and selected recorded work.</p>
+
+        <div class="video-slot">
+          <iframe
+            src="https://www.youtube.com/embed/ADs1MC_c3Z8?start=2950"
+            title="gon pulvo — Live at Modular Nights"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+          <div class="video-slot-label">gon pulvo — Live at Modular Nights</div>
+        </div>
+        <h3>gon pulvo — Live at Modular Nights</h3>
+        <p class="sub">Substation · Seattle · April 12, 2026</p>
+        <p>Live hardware electronic performance at Modular Nights in Seattle.</p>
+
+        <!-- YouTube Playlist -->
+        <div class="playlist-embed">
+          <iframe
+            src="https://www.youtube.com/embed/videoseries?list=PLplE2hKEV9b3xdf0F25YqJTqeH0WISWVn"
+            title="gon pulvo — Recorded Work Playlist"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        <div class="btns" style="margin-top:16px">
+          <a class="btn btn--accent" href="https://gonpulvo.bandcamp.com/album/boogeyman" target="_blank" rel="noopener">♫ Bandcamp</a>
+          <a class="btn" href="https://youtube.com/@gonpulvo" target="_blank" rel="noopener">▶ YouTube</a>
           <a class="btn" href="https://open.spotify.com/artist/4HAYtJiiO0XJlo79hS2ySI" target="_blank" rel="noopener">🟢 Spotify</a>
-          <a class="btn" href="https://music.apple.com/us/artist/gon-pulvo/1333207681" target="_blank" rel="noopener">🍎 Apple Music</a>
-          <a class="btn" href="https://youtube.com/@gonpulvo" target="_blank" rel="noopener">▶️ YouTube</a>
-          <a class="btn btn--accent" href="https://play.gonpulvo.com" target="_blank" rel="noopener">🎧 Listening Room</a>
-          <a class="btn" href="https://www.gonpulvo.com" target="_blank" rel="noopener">🌐 Website</a>
-          <a class="btn" href="https://instagram.com/poruvo" target="_blank" rel="noopener">📷 Instagram</a>
-          <a class="btn" href="https://x.com/gonpulvo" target="_blank" rel="noopener">✖️ X / Twitter</a>
-          <a class="btn" href="https://soundcloud.com/poruvo" target="_blank" rel="noopener">☁️ SoundCloud</a>
-          <a class="btn" href="https://github.com/poruvo" target="_blank" rel="noopener">⚡ GitHub</a>
-          <a class="btn" href="https://www.facebook.com/p/gon-pulvo-61579280514776/" target="_blank" rel="noopener">📘 Facebook</a>
+          <a class="btn" href="https://soundcloud.com/poruvo" target="_blank" rel="noopener">☁ SoundCloud</a>
+          <a class="btn" href="https://weeklybeats.com/gonpulvo" target="_blank" rel="noopener">📅 WeeklyBeats</a>
+          <a class="btn" href="https://boogeyman.gonpulvo.com" target="_blank" rel="noopener">👻 Boogeyman Project</a>
         </div>
       </section>
 
-      <section id="bio" aria-label="Bio & Statement" class="grid">
-        <div>
-          <h2 class="glitch" data-text="Artist Bio">Artist Bio</h2>
-<p><strong>gon pulvo</strong> composes and performs experimental electronic music live, crossing hip hop, house, ambient, and jungle. His sets fuse gritty sound design with narrative motifs and reactive visuals, creating immersive performance environments.</p>
-<p>His recent work delves into psychological themes through recurring characters and looped dream sequences, unfolding across recorded releases and live shows.</p>
+      <!-- ====================================================
+           SECTION 3 — BOOKING DETAILS
+      ==================================================== -->
+      <section id="booking-details" aria-labelledby="booking-details-heading">
+        <h2 id="booking-details-heading" class="glitch" data-text="Booking Details">Booking Details</h2>
 
+        <div class="info-card">
+          <div class="info-card-grid">
+            <div class="info-col">
+              <strong>Set Lengths</strong>
+              <ul>
+                <li>30 minutes</li>
+                <li>45 minutes</li>
+                <li>60 minutes</li>
+                <li>Shorter support sets available by arrangement</li>
+                <li>Extended sets available depending on the event</li>
+              </ul>
+            </div>
+            <div class="info-col">
+              <strong>Best Fit</strong>
+              <ul class="tag-list">
+                <li>Experimental electronic</li>
+                <li>House / club-adjacent electronic</li>
+                <li>Jungle / drum &amp; bass</li>
+                <li>Bass-oriented electronic</li>
+                <li>Ambient / experimental</li>
+                <li>Noise-adjacent</li>
+                <li>Gallery and art-space events</li>
+                <li>DIY mixed bills</li>
+                <li>Electronic support slots</li>
+                <li>Festivals and art walks</li>
+              </ul>
+            </div>
+            <div class="info-col">
+              <strong>Technical Needs</strong>
+              <ul>
+                <li>Table or stable performance surface</li>
+                <li>Power outlet</li>
+                <li>Stereo DI or two 1/4-inch TRS connections into the venue system</li>
+                <li>Venue PA appropriate for the room</li>
+                <li>Optional projector or display with HDMI for visuals</li>
+              </ul>
+            </div>
+            <div class="info-col">
+              <strong>Performance Format</strong>
+              <p>
+                gon pulvo performs electronic music live using 2x Dirtywave M8 units for real-time sequencing, arrangement, transitions, effects, and sound manipulation. Songs are actively performed and restructured during the set rather than simply played back as finished recordings. Audio-reactive visuals can be added when appropriate.
+              </p>
+            </div>
+          </div>
         </div>
-        <div>
-          <h2 class="glitch" data-text="Performance Notes">Performance Notes</h2>
-           <p>His recent work delves into psychological themes through recurring characters and looped dream sequences, unfolding across recorded releases and live shows.</p>
-           <p class="bio-text">With a fully mobile rig, I bring music to life anywhere, anytime—whether it's a pop-up street performance, a private event, or a festival stage. My setup is designed for total flexibility, letting me create immersive sound experiences wherever inspiration or opportunity strikes.</p>
-            <li><strong>Average set length:</strong> 15–45 minutes (I can play a full set or a shorter showcase)</li>
-            <li><strong>Extreme Set length:</strong> 2-4 hours (I'll need resources for this, but I have the music ready to go.)</li>
-            <li><strong>Rig:</strong> M8 tracker, Wind controller (Digital Sax), Tenor & (prolly not) Alto Sax, sampler, live FX; optional audio-reactive GLSL / Synesthesia visuals</li>
-            <li><strong>FFO:</strong> experimental bass, cinematic ambient, jungle breaks</li>
-          </ul>
-        </div>
-        <div class="btns"><button class="btn" onclick="window.print()">Print One-Pager</button></div>
       </section>
 
-      <section id="projects" aria-label="Projects">
-        <h2 class="glitch" data-text="Projects">Projects</h2>
-        <details open>
-          <summary><strong>Boogeyman</strong> — sonic psychological horror <span class="stamp">Project</span></summary>
-          <p>A narrative-driven series exploring fear, identity, and recursion. During live shows with visuals, I like to use glitch aesthetics and reactive visuals to render a dream world in real time.</p>
-          <p class="sub"><strong>Out now</strong> — stream and purchase via the shop. Limited physical units available for shows and direct orders.</p>
-          <div class="btns">
-            <a class="btn btn--yellow" href="https://gonpulvo.bandcamp.com/album/boogeyman" target="_blank" rel="noopener">Bandcamp</a>
-            <a class="btn btn--accent" href="https://youtube.com/playlist?list=PLplE2hKEV9b3xdf0F25YqJTqeH0WISWVn" target="_blank" rel="noopener">YouTube Playlist</a>
-            <a class="btn" href="https://boogeyman.gonpulvo.com" target="_blank" rel="noopener">🛒 Boogeyman — Out Now</a>
-            <a class="btn" href="https://github.com/poruvo/boogeyman" target="_blank" rel="noopener">Project Notes (GitHub)</a>
-          </div>
-          <p class="sub" style="margin-top:8px; font-style:italic">*please be sure to check your lanyard color! Yellow is standard*</p>
-        </details>
-        <details open>
-          <summary><strong>🏢 Professional / Day Life</strong></summary>
+      <!-- ====================================================
+           SECTION 4 — SHORT BIO
+      ==================================================== -->
+      <section id="bio" aria-labelledby="bio-heading">
+        <h2 id="bio-heading" class="glitch" data-text="Artist Bio">Artist Bio</h2>
+        <p class="bio-short" itemprop="description">
+          <strong>gon pulvo</strong> is the experimental electronic project of Stephon X. Jones. His music moves freely through hip hop, house, ambient, jungle, bass music, and less easily categorized territory, using repetition, unusual sound design, improvisational decisions, and narrative ideas as connective tissue.
+        </p>
+
+        <details class="bio-expand print-hide">
+          <summary>Read full bio ↓</summary>
           <p>
-            Outside of music, <strong>Stephon X. Jones</strong> leads <a href="https://turnstonecompliance.com" target="_blank" rel="noopener">🛡️ Turnstone Compliance</a> — 
-            a cybersecurity and compliance consultancy supporting organizations with secure modernization and regulatory alignment.
-            He advises on projects involving Microsoft 365, Intune, Conditional Access, and CMMC readiness for public sector and defense clients. 🚀
+            gon pulvo is the experimental electronic project of Stephon X. Jones. His music moves between hip hop, house, ambient, jungle, bass music, and less easily categorized territory, with each track built around whatever musical language best fits the idea.
           </p>
           <p>
-            Connect professionally on 
-            <a href="https://linkedin.com/in/stephonxjones" target="_blank" rel="noopener">💼 LinkedIn</a>. 
-            Always happy to chat about tech, music, or creative projects! ✨
+            The project is centered on connection: between styles, sounds, people, experiences, and recurring ideas. Releases can move from dance music to abstract sound design, narrative work, rock, or experimental composition without treating genre as a fixed identity.
           </p>
+          <p>
+            Live, Stephon performs and reshapes the catalog in real time using hardware sequencing and arrangement. Recent work includes the narrative-driven Boogeyman project alongside standalone releases and ongoing genre experiments.
+          </p>
+        </details>
+
+        <div class="btns print-hide" style="margin-top:16px">
+          <button class="btn" onclick="window.print()">🖨 Print One-Sheet</button>
+        </div>
+      </section>
+
+      <!-- ====================================================
+           SECTION 5 — PERFORMANCE / TECHNICAL INFO
+      ==================================================== -->
+      <section id="rider" aria-labelledby="rider-heading">
+        <h2 id="rider-heading" class="glitch" data-text="Performance & Technical Info">
+          Performance &amp; Technical Info
+        </h2>
+
+        <div class="rider-grid">
+          <div class="rider-card">
+            <h4>Minimum Setup</h4>
+            <ul>
+              <li>1 table or stable performance surface</li>
+              <li>1 power outlet</li>
+              <li>Stereo DI or two 1/4-inch TRS connections into the venue system</li>
+              <li>Venue PA appropriate for the room</li>
+              <li>Setup time: 15–20 minutes</li>
+              <li>Typical performance length: 30–60 minutes</li>
+            </ul>
+          </div>
+          <div class="rider-card">
+            <h4>Optional — Visuals</h4>
+            <ul>
+              <li>Projector or display</li>
+              <li>HDMI input</li>
+              <li>Advance coordination required</li>
+            </ul>
+          </div>
+          <div class="rider-card">
+            <h4>Core Live Instrument</h4>
+            <p><strong>2x Dirtywave M8</strong> — hardware sequencer, sampler, synthesizer, arranger, and live performance instrument</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================
+           SECTION 6 — SELECTED RECENT WORK
+      ==================================================== -->
+      <section id="selected-work" aria-labelledby="selected-work-heading">
+        <h2 id="selected-work-heading" class="glitch" data-text="Selected Recent Work">Selected Recent Work</h2>
+        <div class="rider-grid">
+          <div class="rider-card">
+            <h4>dissipation</h4>
+            <p>Cumbia accelerating into jungle / drum &amp; bass.</p>
+            <div class="btns">
+              <a class="btn" href="https://music.apple.com/us/album/dissipation-single/6803990533?utm_source=chatgpt.com" target="_blank" rel="noopener">Apple Music</a>
+              <a class="btn" href="https://weeklybeats.com/gonpulvo/music/dissipation?utm_source=chatgpt.com" target="_blank" rel="noopener">WeeklyBeats</a>
+            </div>
+          </div>
+          <div class="rider-card">
+            <h4>sparkling summer sorceror</h4>
+            <p>Shimmering synth-heavy electronic music with early-2000s textures.</p>
+            <div class="btns">
+              <a class="btn" href="https://music.apple.com/us/album/sparkling-summer-sorceror-single/6799438395?utm_source=chatgpt.com" target="_blank" rel="noopener">Apple Music</a>
+              <a class="btn" href="https://weeklybeats.com/gonpulvo/music/sparkling-summer-sorceror?utm_source=chatgpt.com" target="_blank" rel="noopener">WeeklyBeats</a>
+            </div>
+          </div>
+          <div class="rider-card">
+            <h4>vorticity</h4>
+            <p>Avant-garde post-surf rock with guitar, tenor sax, vocals, and electronics.</p>
+            <div class="btns">
+              <a class="btn" href="https://weeklybeats.com/gonpulvo/music/vorticity?utm_source=chatgpt.com" target="_blank" rel="noopener">WeeklyBeats</a>
+            </div>
+          </div>
+          <div class="rider-card">
+            <h4>HOME 8GAIN</h4>
+            <p>Loose house music built around repetition and groove.</p>
+            <div class="btns">
+              <a class="btn" href="https://music.apple.com/us/album/home8gain-single/6802301724?utm_source=chatgpt.com" target="_blank" rel="noopener">Apple Music</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================
+           SECTION 7 — PROJECTS
+      ==================================================== -->
+      <section id="projects" aria-labelledby="projects-heading" class="print-hide">
+        <h2 id="projects-heading" class="glitch" data-text="Featured Project">Featured Project</h2>
+
+        <details open>
+          <summary>
+            <strong>Boogeyman</strong>
+            <span class="stamp">Project</span>
+          </summary>
+          <p>
+            Boogeyman is a 15-track narrative-driven electronic project built around recurring characters, shifting perspectives, dream logic, identity, fear, and causality. Its story unfolds through both music and accompanying narrative material, with motifs and events recurring in altered forms throughout the project.
+          </p>
+          <p class="sub"><strong>Released in 2025.</strong></p>
           <div class="btns">
-            <a class="btn" href="https://linkedin.com/in/stephonxjones" target="_blank" rel="noopener">LinkedIn</a>
-            <a class="btn btn--yellow" href="https://turnstonecompliance.com" target="_blank" rel="noopener">Turnstone Compliance</a>
+            <a class="btn btn--yellow" href="https://gonpulvo.bandcamp.com/album/boogeyman" target="_blank" rel="noopener">♫ Listen on Bandcamp</a>
+            <a class="btn btn--accent" href="https://youtube.com/playlist?list=PLplE2hKEV9b3xdf0F25YqJTqeH0WISWVn" target="_blank" rel="noopener">▶ Watch on YouTube</a>
+            <a class="btn" href="https://boogeyman.gonpulvo.com" target="_blank" rel="noopener">👻 Project Website</a>
+            <a class="btn" href="https://shop.gonpulvo.com" target="_blank" rel="noopener">🛒 Shop</a>
           </div>
         </details>
-        <details open>
-          <summary><strong>🎛️ M8 Community Jam</strong> — collaborative releases <span class="stamp">Community</span></summary>
-          <p>Regular contributor to the M8 Community Jam series — collaborative releases featuring tracks from M8 tracker artists worldwide. New themes chosen by the community every 3 weeks, fostering creative constraints and collective exploration.</p>
+
+        <details>
+          <summary>
+            <strong>M8 Community Jam</strong> — collaborative releases
+            <span class="stamp">Community</span>
+          </summary>
+          <p>
+            gon pulvo regularly contributes to the M8 Community Jam, a recurring community release series built around music created with the Dirtywave M8 tracker.
+          </p>
           <div class="btns">
             <a class="btn btn--accent" href="https://m8communityjam.bandcamp.com" target="_blank" rel="noopener">Community Releases</a>
-            <span class="btn">Join us on Discord</span>
-          </div>
-        </details>
-        <details open>
-          <summary><strong>🎨 Creator Community</strong> — virtual creative space <span class="stamp">Community</span></summary>
-          <p>A multidisciplinary creative space for artists of all kinds — musicians, visual artists, designers, writers, and more. We host virtual shows, meetups, and collaborative events. Connect with fellow creators, share your work, and participate in community projects.</p>
-          <div class="btns">
-            <a class="btn btn--accent" href="https://discord.gg/C2yJdVjzvu" target="_blank" rel="noopener">Join the Community</a>
           </div>
         </details>
       </section>
 
-      <section id="gear" aria-label="Tools & Gear">
-        <h2 class="glitch" data-text="Tools & Gear">Tools & Gear</h2>
-        <p class="sub">Core instruments and tools used in live performance and production.</p>
-  <p class="sub">My mobile rig is designed for busking and street performance, featuring portable loudspeakers and a rugged backpack. The setup is fully amplified with battery-powered gear, allowing for flexible, high-quality sound in any location.</p>
-        <ul class="gear-list">
-          <li><a href="https://dirtywave.com/products/m8-tracker" target="_blank" rel="noopener">Dirtywave M8 Tracker</a></li>
-          <li><a href="https://audient.com/products/audio-interfaces/evo4/overview/" target="_blank" rel="noopener">Audient EVO 4</a> &amp; <a href="https://audient.com/products/audio-interfaces/evo8/overview/" target="_blank" rel="noopener">Audient EVO 8</a></li>
-          <li><a href="https://www.roland.com/global/products/aerophone_go/" target="_blank" rel="noopener">Roland AE-05 Aerophone GO</a></li>
-          <li><a href="https://usa.yamaha.com/products/musical_instruments/winds/digital_wind_instruments/yds-150/index.html" target="_blank" rel="noopener">Yamaha YDS-150 Digital Saxophone</a></li>
-        </ul>
-        <h3 class="glitch" data-text="Busking / Mobile Rig">Busking / Mobile Rig</h3>
-        <ul class="gear-list">
-          <li><a href="https://www.jbl.com/XTREME-4.html" target="_blank" rel="noopener">JBL Xtreme 4</a> — Portable PA / performance monitor</li>
-          <li><a href="https://www.jbl.com/CHARGE-6.html" target="_blank" rel="noopener">JBL Charge 6</a> — Backup / compact mobile playback</li>
-          <li><a href="https://www.jbl.com/CLIP-5.html" target="_blank" rel="noopener">JBL Clip 5</a> — Ultra-portable playback</li>
-         </ul>
-         <h3 class="glitch" data-text="Studio Monitors & Loudspeakers">Studio Monitors & Loudspeakers</h3>
-         <ul class="gear-list">
-           <li><a href="https://www.presonus.com/products/eris-e45-studio-monitor?srsltid=AfmBOooAs_t3DMvgoYAlfwgSFevCDOsquS5r2dgdNsFPvrODT0AK5DTL" target="_blank" rel="noopener">Presonus Eris 4.5 BT</a></li>
-           <li><a href="https://harbingerproaudio.com/wp-content/uploads/2023/09/Harbinger_V2112-V2115_Manual.pdf" target="_blank" rel="noopener">Harbinger 12" V2112 Powered Speakers</a></li>
-         </ul>
-         <h3 class="glitch" data-text="Microphones">Microphones</h3>
-         <ul class="gear-list">
-           <li><a href="https://zoomcorp.com/en/us/handheld-recorders/handheld-recorders/h1n-handy-recorder/" target="_blank" rel="noopener">Zoom H1n Handy Recorder</a></li>
-           <li><a href="https://www.logitechg.com/en-us/shop/p/yeti-premium-usb-microphone" target="_blank" rel="noopener">Blue Yeti USB Microphone</a></li>
-         </ul>
-         <h3 class="glitch" data-text="Interfaces & Mixers">Interfaces & Mixers</h3>
-         <ul class="gear-list">
-           <li><a href="https://www.behringer.com/series.html?category=R-BEHRINGER-UPHORIASERIES" target="_blank" rel="noopener">Behringer U-Phoria Series</a></li>
-           <li><a href="https://usa.yamaha.com/products/proaudio/mixers/mg_series_xu_model/index.html" target="_blank" rel="noopener">Yamaha MG Series Mixer</a></li>
-         </ul>
-        <h3 class="glitch" data-text="Bags & Cases">Bags & Cases</h3>
-        <ul class="gear-list">
-          <li><a href="https://www.511tactical.com/rush12-2-0-backpack.html?_gl=1*1b9n3g*_up*MQ..*_gs*MQ..&gclid=CjwKCAjwu9fHBhAWEiwAzGRC_38SdJYsvmgDhabL_GT9yZVqKZp_UFCWhsA3osNKFa6ndw65zOwfxBoCW3UQAvD_BwE&gbraid=0AAAAAD4yJCny8eJJ6x-TDcuKPcGWErcoM" target="_blank" rel="noopener">5.11 RUSH12 2.0 Backpack</a></li>
-        </ul>
-        </ul>
-        <h3 class="glitch" data-text="Software">Software</h3>
-        <ul class="gear-list">
-          <li><a href="https://new.steinberg.net/cubase/" target="_blank" rel="noopener">Cubase 12+</a> / <a href="https://new.steinberg.net/cubasis/" target="_blank" rel="noopener">Cubasis 3</a> — sequencing, MIDI routing, and sync</li>
-          <li><a href="https://www.ableton.com/en/live/" target="_blank" rel="noopener">Ableton Live</a> — performance, sound design, and loop composition</li>
-        </ul>
-      </section>
-
-      <section id="contact" aria-label="Contact">
-  <h2 class="glitch" data-text="Contact">Contact</h2>
-  <p>✉️ Email: <a class="btn" href="mailto:contact@gonpulvo.com">contact@gonpulvo.com</a></p>
-  <p>🗨️ Discord: <a class="btn" href="https://discord.com/users/" target="_blank" rel="noopener">@poruvo</a></p>
-          <div class="btns" style="margin-top:8px">
-            <a class="btn" href="https://gonpulvo.com" target="_blank" rel="noopener">🌐 Website</a>
-            <a class="btn btn--accent" href="https://gonpulvo.bandcamp.com" target="_blank" rel="noopener">♫ Bandcamp</a>
-            <a class="btn" href="https://youtube.com/@gonpulvo" target="_blank" rel="noopener">▶ YouTube</a>
-            <a class="btn" href="https://instagram.com/gonpulvo" target="_blank" rel="noopener">📸 Instagram</a>
-          </div>
+      <!-- ====================================================
+           SECTION 7 — SOCIALS / LINKS
+      ==================================================== -->
+      <section id="socials" aria-labelledby="socials-heading" class="print-hide">
+        <h2 id="socials-heading" class="glitch" data-text="Links">Links</h2>
+        <p class="sub" style="margin-bottom:.85em">Music, social, and contact links.</p>
         <div class="btns">
-          <a class="btn" href="https://gonpulvo.bandcamp.com/album/boogeyman" target="_blank" rel="noopener">🎵 Bandcamp</a>
+          <a class="btn btn--accent" href="https://gonpulvo.bandcamp.com/album/boogeyman" target="_blank" rel="noopener">♫ Bandcamp</a>
           <a class="btn" href="https://open.spotify.com/artist/4HAYtJiiO0XJlo79hS2ySI" target="_blank" rel="noopener">🟢 Spotify</a>
           <a class="btn" href="https://music.apple.com/us/artist/gon-pulvo/1333207681" target="_blank" rel="noopener">🍎 Apple Music</a>
-          <a class="btn" href="https://youtube.com/@gonpulvo" target="_blank" rel="noopener">▶️ YouTube</a>
-          <a class="btn" href="https://www.gonpulvo.com" target="_blank" rel="noopener">🌐 Website</a>
+          <a class="btn" href="https://youtube.com/@gonpulvo" target="_blank" rel="noopener">▶ YouTube</a>
+          <a class="btn" href="https://soundcloud.com/poruvo" target="_blank" rel="noopener">☁ SoundCloud</a>
+          <a class="btn" href="https://weeklybeats.com/gonpulvo" target="_blank" rel="noopener">📅 WeeklyBeats</a>
           <a class="btn" href="https://instagram.com/poruvo" target="_blank" rel="noopener">📷 Instagram</a>
-          <a class="btn" href="https://x.com/gonpulvo" target="_blank" rel="noopener">✖️ X / Twitter</a>
-          <a class="btn" href="https://soundcloud.com/poruvo" target="_blank" rel="noopener">☁️ SoundCloud</a>
-          <a class="btn" href="https://github.com/poruvo" target="_blank" rel="noopener">⚡ GitHub</a>
+          <a class="btn" href="https://x.com/gonpulvo" target="_blank" rel="noopener">✖ X / Twitter</a>
           <a class="btn" href="https://www.facebook.com/p/gon-pulvo-61579280514776/" target="_blank" rel="noopener">📘 Facebook</a>
+          <a class="btn" href="https://www.gonpulvo.com" target="_blank" rel="noopener">🌐 Website</a>
+          <a class="btn btn--accent" href="https://play.gonpulvo.com" target="_blank" rel="noopener">🎧 Listening Room</a>
+          <a class="btn btn--yellow" href="https://shop.gonpulvo.com" target="_blank" rel="noopener">🛒 Shop</a>
         </div>
       </section>
 
-  <footer>© <span id="yr"></span> gon pulvo — Electronic Press Kit</footer>
+      <!-- ====================================================
+           SECTION 8 — CONTACT
+      ==================================================== -->
+      <section id="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading" class="glitch" data-text="Contact / Book">Contact / Book</h2>
+        <div class="contact-card">
+          <address>
+            <p>✉️ <strong>Email:</strong> <a href="mailto:contact@gonpulvo.com">contact@gonpulvo.com</a></p>
+            <p>📷 <strong>Instagram:</strong> <a href="https://instagram.com/poruvo" target="_blank" rel="noopener">@poruvo</a></p>
+            <p>🗨️ <strong>Discord:</strong> @poruvo</p>
+          </address>
+          <p class="contact-note">
+            For booking, performance, press, or licensing inquiries, email is preferred.<br>
+            Please include: event date, city, venue, set length, compensation,
+            and technical details if available.
+          </p>
+          <div class="btns" style="margin-top:20px">
+            <a class="btn btn--primary" href="mailto:contact@gonpulvo.com">📩 Book gon pulvo</a>
+            <a class="btn" href="https://instagram.com/poruvo" target="_blank" rel="noopener">📷 Instagram DM</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================
+           FOOTER
+      ==================================================== -->
+      <footer>
+        <div class="footer-cta print-hide">
+          <a class="btn btn--primary" href="mailto:contact@gonpulvo.com">📩 Book gon pulvo</a>
+          <a class="btn btn--accent" href="https://gonpulvo.bandcamp.com/album/boogeyman" target="_blank" rel="noopener">♫ Bandcamp</a>
+          <a class="btn" href="https://youtube.com/@gonpulvo" target="_blank" rel="noopener">▶ YouTube</a>
+          <a class="btn" href="https://instagram.com/poruvo" target="_blank" rel="noopener">📷 Instagram</a>
+        </div>
+        <p>
+          &copy; <span id="yr"></span> gon pulvo &mdash; Electronic Press Kit
+          &middot; <a href="https://gonpulvo.com">gonpulvo.com</a>
+        </p>
+      </footer>
+
     </article>
   </main>
 
-  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+  <script>
+    // Year
+    document.getElementById('yr').textContent = new Date().getFullYear();
 
-    <!-- JSON-LD: Artist (Person) -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "@id": "https://gonpulvo.com/#person",
-        "name": "gon pulvo",
-        "alternateName": "Stephon",
-        "description": "Experimental electronic music producer and live performer.",
-        "image": "https://gonpulvo.com/gp-2025-logo.png",
-        "url": "https://gonpulvo.com/",
-        "email": "mailto:contact@gonpulvo.com",
-        "sameAs": [
-          "https://open.spotify.com/artist/4HAYtJiiO0XJlo79hS2ySI",
-          "https://music.apple.com/us/artist/gon-pulvo/1333207681",
-          "https://gonpulvo.bandcamp.com/",
-          "https://www.youtube.com/@gonpulvo",
-          "https://instagram.com/poruvo",
-          "https://x.com/gonpulvo",
-          "https://soundcloud.com/poruvo",
-          "https://github.com/poruvo"
-        ]
-      }
-    </script>
+    // Hamburger toggle with ARIA
+    const hamburger = document.querySelector('.hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
 
-    <!-- JSON-LD: Featured Recording -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "MusicPlaylist",
-        "name": "Boogeyman",
-        "description": "The official Boogeyman playlist by gon pulvo — a narrative-driven experimental electronic project exploring fear, identity, and recursion through live performance and releases.",
-        "url": "https://youtube.com/playlist?list=PLplE2hKEV9b3xdf0F25YqJTqeH0WISWVn",
-        "image": "https://gonpulvo.com/gp-2025-logo.png",
-        "inLanguage": "en",
-        "genre": ["Experimental Electronic"],
-        "datePublished": "2025-01-29",
-        "creator": { "@id": "https://gonpulvo.com/#person" },
-        "sameAs": [
-          "https://youtube.com/playlist?list=PLplE2hKEV9b3xdf0F25YqJTqeH0WISWVn",
-          "https://gonpulvo.bandcamp.com/boogeyman",
-          "https://github.com/poruvo/boogeyman"
-        ]
-      }
-    </script>
+    if (hamburger && mobileNav) {
+      hamburger.addEventListener('click', () => {
+        const open = mobileNav.classList.toggle('active');
+        hamburger.setAttribute('aria-expanded', String(open));
+      });
 
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "CreativeWorkSeries",
-        "name": "Boogeyman",
-        "alternateName": [
-          "Boogeyman (Part I)",
-          "gon pulvo — Boogeyman",
-          "Boogeyman (Arc I)"
-        ],
-        "description": "A narrative-driven experimental electronic project by gon pulvo, exploring fear, identity, and recursion through soundscapes and sonic storytelling.",
-        "url": "https://gonpulvo.com/#boogeyman",
-        "image": "https://gonpulvo.com/gp-2025-logo.png",
-        "author": { "@id": "https://gonpulvo.com/#person" },
-        "sameAs": [
-          "https://github.com/poruvo/boogeyman",
-          "https://youtube.com/playlist?list=PLplE2hKEV9b3xdf0F25YqJTqeH0WISWVn&si=g_opZ0w8OYekTvP-",
-          "https://gonpulvo.bandcamp.com/boogeyman"
-        ]
-      }
-    </script>
+      // Close on outside click
+      document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+          mobileNav.classList.remove('active');
+          hamburger.setAttribute('aria-expanded', 'false');
+        }
+      });
 
-    <!-- JSON-LD: Gon Pulvo Shop -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Store",
-        "name": "Gon Pulvo Shop",
-        "url": "https://shop.gonpulvo.com",
-        "description": "Official gon pulvo merchandise: apparel, physical releases, and merch.",
-        "image": "https://gonpulvo.com/gp-2025-logo.png",
-        "sameAs": [
-          "https://shop.gonpulvo.com"
-        ],
-        "seller": { "@id": "https://gonpulvo.com/#person" }
-      }
-    </script>
+      // Close when a mobile nav link is clicked
+      mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileNav.classList.remove('active');
+          hamburger.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  </script>
 
-    <!-- JSON-LD: Boogeyman Store -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Store",
-        "name": "Boogeyman Store",
-        "url": "https://boogeyman.gonpulvo.com",
-        "description": "Official Boogeyman assets: digital visuals, and project-related assets.",
-        "image": "https://gonpulvo.com/gp-2025-logo.png",
-        "sameAs": [
-          "https://boogeyman.gonpulvo.com"
-        ],
-        "seller": { "@id": "https://gonpulvo.com/#person" }
-      }
-    </script>
-
-    <!-- JSON-LD: EPK Website -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "gon pulvo — EPK",
-        "url": "https://epk.gonpulvo.com",
-        "description": "Official electronic press kit for gon pulvo: bio, press photos, music,  videos, and contact.",
-        "inLanguage": "en",
-        "image": "https://gonpulvo.com/gp-2025-logo.png",
-        "sameAs": [
-          "https://epk.gonpulvo.com"
-        ],
-        "publisher": { "@id": "https://gonpulvo.com/#person" }
-      }
-    </script>
+  <!-- Structured Data -->
+  <script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "gon pulvo",
+    "url": "https://www.gonpulvo.com",
+    "image": "https://epk.gonpulvo.com/assets/artistphoto.png",
+    "description": "gon pulvo is the experimental electronic project of Stephon X. Jones. His music moves through hip hop, house, ambient, jungle, bass music, and less easily categorized territory, with live hardware performance at its center.",
+    "genre": ["Experimental Electronic", "Jungle", "Bass Music", "Hip Hop", "House", "Ambient"],
+    "sameAs": [
+      "https://gonpulvo.bandcamp.com",
+      "https://instagram.com/poruvo",
+      "https://x.com/gonpulvo",
+      "https://soundcloud.com/poruvo",
+      "https://open.spotify.com/artist/4HAYtJiiO0XJlo79hS2ySI",
+      "https://www.facebook.com/p/gon-pulvo-61579280514776/"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "contact@gonpulvo.com",
+      "contactType": "booking"
+    }
+  }</script>
 </body>
 </html>
-
