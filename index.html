@@ -810,6 +810,281 @@
         animation-duration: .01ms !important;
       }
     }
+
+    /* ============================================================
+       BOOKING-FIRST PRESENTATION
+    ============================================================ */
+    :root {
+      --bg: #090a0c;
+      --ink: #f0eeeb;
+      --muted: #a6a6a6;
+      --accent: #f0445e;
+      --rule: rgba(255,255,255,.18);
+      --rule-strong: rgba(255,255,255,.36);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--ink); font: 17px / 1.65 var(--serif); }
+    .background-image { opacity: .06; filter: blur(0) brightness(.25); }
+    .noise, .scan { display: none; }
+    nav {
+      background: rgba(9,10,12,.94);
+      border-bottom: 1px solid var(--rule);
+      backdrop-filter: blur(12px);
+      padding: 9px 24px;
+    }
+    .nav-container { max-width: 1160px; }
+    .nav-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .nav-brand img { width: 36px; height: 36px; object-fit: contain; }
+    .nav-links { gap: 20px; flex-wrap: nowrap; }
+    .nav-btn {
+      display: inline-flex;
+      padding: 8px 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .nav-btn:hover { color: var(--ink); border: 0; box-shadow: none; transform: none; }
+    .nav-btn--cta, .nav-btn--cta:hover { color: var(--accent); background: transparent; }
+    .nav-right { display: none; }
+    .hamburger { background: rgba(9,10,12,.96); }
+    .mobile-menu { border-radius: 4px; border-color: var(--rule-strong); }
+    .mobile-menu .icon-link { border-radius: 3px; }
+    main { min-height: 100vh; padding: 84px 28px 48px; }
+    .wrap {
+      width: min(1160px, 100%);
+      padding: 0;
+      overflow: visible;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+    section {
+      scroll-margin-top: 78px;
+      margin-top: 54px;
+      padding-top: 28px;
+      border-top: 1px solid var(--rule);
+    }
+    section h2 { margin: 0 0 20px; font-size: 30px; }
+    .glitch::before, .glitch::after { display: none; }
+    .subtitle { font-size: 12px; letter-spacing: .12em; }
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      align-items: center;
+      gap: 48px;
+      padding: 28px 0 12px;
+    }
+    .hero-copy { min-width: 0; }
+    .hero-copy h1 {
+      margin: 12px 0 16px;
+      font-size: 76px;
+      line-height: .98;
+    }
+    .hero-promise {
+      margin: 0 0 6px;
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .hero-genres { max-width: 45ch; color: var(--muted); }
+    .hero-facts {
+      display: grid;
+      gap: 8px;
+      margin: 24px 0;
+      padding: 14px 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      list-style: none;
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+    .hero-facts li { margin: 0; }
+    .hero-facts span { margin-left: 8px; color: var(--muted); }
+    .hero-actions, .contact-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .hero-image-wrap { height: 410px; overflow: hidden; background: #111; }
+    .hero-photo { width: 100%; height: 100%; object-fit: cover; object-position: 73% center; }
+    .btn {
+      min-height: 42px;
+      padding: 9px 14px;
+      border-radius: 3px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .btn--primary { background: var(--accent); border-color: var(--accent); font-size: 12px; padding: 10px 18px; }
+    .btn--primary:hover { background: #d93650; }
+    .btn--secondary { background: transparent; border-color: var(--rule-strong); font-size: 12px; padding: 10px 18px; }
+    .video-slot { overflow: visible; border: 0; background: transparent; }
+    .video-slot iframe { width: 100%; aspect-ratio: 16 / 9; }
+    .live-caption { margin: 12px 0 0; color: var(--muted); font-family: var(--mono); font-size: 13px; }
+    .live-caption strong { color: var(--ink); font-weight: 600; }
+    .performance-list { padding: 0; border-top: 1px solid var(--rule); list-style: none; }
+    .performance-list li {
+      display: grid;
+      grid-template-columns: minmax(190px, 1fr) minmax(220px, 1.2fr) 160px;
+      gap: 18px;
+      align-items: center;
+      margin: 0;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .performance-list strong { font-weight: 600; }
+    .performance-list span, .performance-list time { color: var(--muted); font-family: var(--mono); font-size: 13px; }
+    .performance-list time { text-align: right; }
+    .format-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 36px;
+      margin: 0;
+    }
+    .format-grid > div {
+      display: grid;
+      grid-template-columns: minmax(90px, .55fr) 1fr;
+      gap: 12px;
+      padding: 13px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .format-grid dt { color: var(--muted); font-family: var(--mono); font-size: 12px; text-transform: uppercase; }
+    .format-grid dd { margin: 0; font-size: 15px; }
+    .fit-line { margin: 22px 0 0; color: var(--muted); }
+    .fit-line strong { color: var(--ink); }
+    .press-feature {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(240px, .8fr);
+      gap: 36px;
+      align-items: center;
+      padding-top: 4px;
+    }
+    .press-meta { margin: 0 0 8px; color: var(--accent); font-family: var(--mono); font-size: 12px; text-transform: uppercase; }
+    .press-feature h3 { max-width: 42ch; margin: 0 0 12px; font-size: 25px; line-height: 1.25; }
+    .press-feature > div > p:not(.press-meta):not(.press-pickup) { color: var(--muted); font-size: 15px; }
+    .press-read { display: inline-block; color: var(--accent); font-family: var(--mono); font-size: 13px; text-decoration: underline; text-underline-offset: 4px; }
+    .press-pickup { margin: 18px 0 0; color: var(--muted); font-family: var(--mono); font-size: 11px; }
+    .press-pickup a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+    .press-quote { margin: 0; padding-left: 20px; border-left: 2px solid var(--accent); font-size: 23px; line-height: 1.35; }
+    .press-quote cite { display: block; margin-top: 14px; color: var(--muted); font-family: var(--mono); font-size: 11px; font-style: normal; }
+    .player-promo {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      padding: 22px 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .player-promo > div { max-width: 66ch; }
+    .player-kicker { margin: 0 0 6px; color: var(--accent); font-family: var(--mono); font-size: 11px; text-transform: uppercase; }
+    .player-promo h3 { margin: 0 0 6px; font-size: 24px; }
+    .player-promo p:last-child { margin: 0; color: var(--muted); font-size: 15px; }
+    .track-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+    .track { padding-top: 14px; border-top: 1px solid var(--rule); }
+    .track h3, .project-list h3 { margin: 0 0 8px; font-size: 20px; }
+    .track p, .project-list p { min-height: 3.2em; color: var(--muted); font-size: 15px; }
+    .track a, .project-list a, footer a {
+      display: inline-block;
+      margin: 4px 14px 0 0;
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 12px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .bio-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: start; }
+    .bio-short { max-width: 64ch; margin: 0; font-size: 19px; line-height: 1.6; }
+    .press-bio { margin: 0; padding: 0; border: 0; border-radius: 0; background: transparent; }
+    .press-bio summary { color: var(--accent); font-family: var(--mono); font-size: 13px; }
+    .press-bio[open] summary { margin-bottom: 12px; }
+    .press-bio p { color: var(--muted); font-size: 15px; }
+    .project-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+    .project-list article { padding-top: 14px; border-top: 1px solid var(--rule); }
+    .asset-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; }
+    .asset-list a {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 15px 0;
+      border-top: 1px solid var(--rule);
+      color: var(--ink);
+    }
+    .asset-list strong { font-weight: 600; }
+    .asset-list span { color: var(--muted); font-family: var(--mono); font-size: 12px; white-space: nowrap; }
+    .contact-card { padding: 0; border: 0; border-radius: 0; background: transparent; }
+    .booking-note { max-width: 66ch; color: var(--muted); }
+    .contact-actions { margin-top: 20px; }
+    footer { margin-top: 60px; padding-top: 18px; border-top: 1px solid var(--rule); text-align: left; }
+    footer p { margin: 0; }
+
+    @media (max-width: 850px) {
+      .nav-links { gap: 13px; }
+      .hero-layout { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .hero-copy h1 { font-size: 58px; }
+      .hero-image-wrap { height: 350px; }
+      .performance-list li { grid-template-columns: 1fr 1fr 130px; gap: 12px; }
+    }
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .hamburger { display: flex; }
+      main { padding: 70px 20px 36px; }
+      .hero-layout { grid-template-columns: 1fr; gap: 24px; padding-top: 10px; }
+      .hero-copy h1 { font-size: 56px; }
+      .hero-image-wrap { grid-row: 1; height: auto; aspect-ratio: 1.72 / 1; }
+      section { margin-top: 42px; padding-top: 22px; }
+      section h2 { font-size: 26px; }
+      .performance-list li { grid-template-columns: 1fr auto; }
+      .performance-list span { grid-column: 1; grid-row: 2; }
+      .performance-list time { grid-column: 2; grid-row: 1 / span 2; }
+      .track-list { grid-template-columns: 1fr; gap: 18px; }
+      .player-promo { align-items: flex-start; flex-direction: column; gap: 16px; }
+      .press-feature { grid-template-columns: 1fr; gap: 20px; }
+      .track p { min-height: 0; }
+      .bio-grid { grid-template-columns: 1fr; gap: 18px; }
+      .project-list { gap: 20px; }
+      .format-grid { gap: 0 18px; }
+    }
+    @media (max-width: 520px) {
+      .hero-copy h1 { font-size: 48px; }
+      .hero-facts span { display: block; margin-left: 0; }
+      .format-grid, .project-list, .asset-list { grid-template-columns: 1fr; }
+      .format-grid > div { grid-template-columns: 96px 1fr; }
+      .asset-list a { align-items: flex-start; flex-direction: column; gap: 3px; }
+      .performance-list li { grid-template-columns: 1fr; gap: 3px; }
+      .performance-list span, .performance-list time { grid-column: 1; grid-row: auto; text-align: left; }
+      .hero-actions .btn { flex: 1 1 auto; justify-content: center; }
+    }
+    @media print {
+      nav, .hamburger, .mobile-menu, .background-image,
+      .print-hide, #live .video-slot, #projects, #assets, footer { display: none !important; }
+      body { background: #fff !important; color: #000 !important; font-size: 10pt; }
+      main { display: block; min-height: 0; padding: 0; }
+      .wrap { width: 100%; }
+      .hero-layout { grid-template-columns: 1fr 1fr; gap: 18pt; padding: 0; }
+      .hero-copy h1 { font-size: 34pt; }
+      .hero-image-wrap { height: 2in; }
+      section { margin-top: 16pt; padding-top: 0; border: 0; }
+      section h2 { margin-bottom: 8pt; font-size: 15pt; }
+      .live-caption, .format-grid dd, .performance-list strong, .bio-short { color: #000 !important; }
+      .format-grid { gap: 0 14pt; }
+      .format-grid > div, .performance-list li { padding: 5pt 0; }
+      .press-bio { display: none; }
+      .contact-card { display: block; }
+      .contact-actions .btn { display: inline-block !important; color: #000 !important; background: transparent !important; border: 1px solid #000 !important; }
+      a { color: #000 !important; }
+    }
   </style>
 </head>
 <body>
@@ -831,53 +1106,18 @@
   ============================================================ -->
   <nav aria-label="Site navigation">
     <div class="nav-container">
+      <a class="nav-brand" href="#home" aria-label="gon pulvo home">
+        <img src="assets/gp-logo-320.png?v=2" alt="" width="40" height="40" />
+        <span>gon pulvo</span>
+      </a>
       <div class="nav-links">
-        <a class="nav-btn nav-btn--cta" href="#contact">
-          <span class="nav-icon">📩</span>
-          <span>Book</span>
-        </a>
-        <a class="nav-btn" href="#watch">
-          <span class="nav-icon">▶</span>
-          <span>Watch</span>
-        </a>
-        <a class="nav-btn" href="#booking-details">
-          <span class="nav-icon">📋</span>
-          <span>Details</span>
-        </a>
-        <a class="nav-btn" href="#bio">
-          <span class="nav-icon">👤</span>
-          <span>Bio</span>
-        </a>
-        <a class="nav-btn" href="#rider">
-          <span class="nav-icon">🎛</span>
-          <span>Technical</span>
-        </a>
-        <a class="nav-btn" href="#projects">
-          <span class="nav-icon">🚀</span>
-          <span>Projects</span>
-        </a>
-        <a class="nav-btn" href="#home8gain">
-          <span class="nav-icon">◒</span>
-          <span>HOME8GAIN</span>
-        </a>
-        <a class="nav-btn" href="#contact">
-          <span class="nav-icon">✉</span>
-          <span>Contact</span>
-        </a>
-      </div>
-      <div class="nav-right">
-        <a class="icon-link icon-link--bandcamp"
-           href="https://gonpulvo.bandcamp.com/album/boogeyman"
-           target="_blank" rel="noopener">♫ Bandcamp</a>
-          <a class="icon-link icon-link--cta"
-            href="https://play.gonpulvo.com"
-            target="_blank" rel="noopener">🎧 Listening Room</a>
-        <a class="icon-link"
-           href="https://shop.gonpulvo.com"
-           target="_blank" rel="noopener">🛒 Shop</a>
-        <a class="icon-link"
-           href="https://gonpulvo.com"
-           target="_blank" rel="noopener">🌐 Web</a>
+        <a class="nav-btn" href="#live">Live</a>
+        <a class="nav-btn" href="#press">Press</a>
+        <a class="nav-btn" href="#player">Music</a>
+        <a class="nav-btn" href="#bio">Bio</a>
+        <a class="nav-btn" href="#tech">Tech</a>
+        <a class="nav-btn" href="#assets">Assets</a>
+        <a class="nav-btn nav-btn--cta" href="#contact">Book</a>
       </div>
     </div>
   </nav>
@@ -887,24 +1127,13 @@
     <span></span><span></span><span></span>
   </button>
   <div class="mobile-menu" id="mobile-nav" role="navigation" aria-label="Mobile navigation">
-    <a class="icon-link icon-link--cta" href="#contact">📩 Book gon pulvo</a>
-    <a class="icon-link" href="#watch">▶ Watch / Listen</a>
-    <a class="icon-link" href="#booking-details">📋 Booking Details</a>
-    <a class="icon-link" href="#bio">👤 Bio</a>
-    <a class="icon-link" href="#rider">🎛 Technical</a>
-    <a class="icon-link" href="#projects">🚀 Projects</a>
-    <a class="icon-link" href="#home8gain">◒ HOME8GAIN</a>
-    <a class="icon-link" href="#socials">🔗 Links</a>
-    <a class="icon-link" href="#contact">✉ Contact</a>
-    <a class="icon-link icon-link--bandcamp"
-       href="https://gonpulvo.bandcamp.com/album/boogeyman"
-       target="_blank" rel="noopener">♫ Bandcamp</a>
-     <a class="icon-link icon-link--cta"
-       href="https://play.gonpulvo.com"
-       target="_blank" rel="noopener">🎧 Listening Room</a>
-    <a class="icon-link"
-       href="https://shop.gonpulvo.com"
-       target="_blank" rel="noopener">🛒 Shop</a>
+    <a class="icon-link" href="#live">Live</a>
+    <a class="icon-link" href="#press">Press</a>
+    <a class="icon-link" href="#player">Music</a>
+    <a class="icon-link" href="#bio">Bio</a>
+    <a class="icon-link" href="#tech">Tech</a>
+    <a class="icon-link" href="#assets">Assets</a>
+    <a class="icon-link icon-link--cta" href="#contact">Book</a>
   </div>
 
   <!-- ============================================================
@@ -913,387 +1142,200 @@
   <main>
     <article class="wrap" itemscope itemtype="https://schema.org/MusicGroup">
 
-      <!-- ====================================================
-           SITE HEADER — Artist Identity
-      ==================================================== -->
-      <header>
-        <div class="header-images">
-          <img src="assets/gp-logo-320.png?v=2"
-               alt="gon pulvo logo"
-               class="logo"
-               width="160" height="160" />
-        </div>
-        <div>
+      <header class="hero-layout" id="home">
+        <div class="hero-copy">
           <p class="subtitle">Electronic Press Kit</p>
-          <h1 class="glitch" data-text="gon pulvo" itemprop="name">gon pulvo</h1>
-          <p class="sub">Experimental electronic &middot; hip hop &middot; house &middot; ambient &middot; jungle</p>
+          <h1 itemprop="name">gon pulvo</h1>
+          <p class="hero-promise">Live hardware electronic performance</p>
+          <p class="hero-genres">Experimental electronic &middot; house &middot; jungle &middot; hip hop &middot; ambient</p>
+          <ul class="hero-facts">
+            <li>Puget Sound, WA <span>Regional travel available</span></li>
+            <li>30 / 45 / 60 minute sets</li>
+          </ul>
+          <div class="hero-actions print-hide">
+            <a class="btn btn--secondary" href="#live">Watch live</a>
+            <a class="btn btn--primary" href="#contact">Book</a>
+            <button class="btn" onclick="window.print()">Print / save one-sheet</button>
+          </div>
         </div>
-        <div class="header-images">
-          <img src="assets/artistphoto.png"
-               alt="gon pulvo — Stephon X. Jones"
-               class="artist-photo"
-               itemprop="image"
-               width="160" height="160" />
+        <div class="hero-image-wrap">
+          <img src="assets/artistphoto.png" alt="Stephon X. Jones outdoors near the coast" class="hero-photo" itemprop="image" width="1200" height="630" />
         </div>
       </header>
 
-      <!-- ====================================================
-           SECTION 1 — BOOKING HERO
-      ==================================================== -->
-      <section aria-labelledby="booking-hero-heading">
-        <div class="booking-hero">
-          <p class="subtitle">Live Electronic Performance &amp; Booking</p>
-          <h2 id="booking-hero-heading" class="glitch" data-text="gon pulvo — live experimental electronic">
-            gon pulvo — live experimental electronic
-          </h2>
-          <p class="booking-hero-lead">
-            gon pulvo is the experimental electronic project of Stephon X. Jones, moving between hip hop, house, ambient, jungle, bass music, and whatever else fits the idea. Live sets are performed and reshaped in real time on hardware, with arrangements, transitions, effects, texture, and dynamics manipulated throughout the performance.
-          </p>
-
-          <div class="booking-meta-grid">
-            <div class="booking-meta-item">
-              <strong>Available For</strong>
-              <ul>
-                <li>30-60 minute live electronic sets</li>
-                <li>Electronic and experimental music bills</li>
-                <li>House, jungle, bass, and club-adjacent events</li>
-                <li>Galleries and art spaces</li>
-                <li>DIY shows</li>
-                <li>Festivals and art walks</li>
-                <li>Mixed-genre bills</li>
-                <li>Electronic support slots</li>
-                <li>Public-space and unconventional performance settings</li>
-              </ul>
-            </div>
-            <div class="booking-meta-item">
-              <strong>Simple Setup</strong>
-              <ul>
-                <li>Table or stable performance surface</li>
-                <li>Power outlet</li>
-                <li>Stereo DI or two 1/4-inch TRS inputs into the venue system</li>
-              </ul>
-            </div>
-            <div class="booking-meta-item">
-              <strong>Optional</strong>
-              <p>Audio-reactive visuals are available with advance coordination. Projector or display with HDMI input required.</p>
-            </div>
-            <div class="booking-meta-item">
-              <strong>Location</strong>
-              <p>Based in Washington's Puget Sound region. Available for Pacific Northwest and regional bookings, with travel possible by arrangement.</p>
-            </div>
-          </div>
-
-          <div class="hero-cta-group">
-            <a class="btn btn--primary" href="#contact">📩 Book gon pulvo</a>
-            <a class="btn btn--secondary" href="#watch">▶ Watch / Listen</a>
-            <button class="btn print-hide" onclick="window.print()">🖨 Print One-Sheet</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- ====================================================
-           SECTION 2 — WATCH / LISTEN / LIVE PROOF
-      ==================================================== -->
-      <section id="watch" aria-labelledby="watch-heading" class="print-hide">
-        <h2 id="watch-heading" class="glitch" data-text="Watch / Listen">Watch / Listen</h2>
-        <p class="sub" style="margin-bottom:1.25em">Live performance footage and selected recorded work.</p>
-
+      <section id="live" aria-labelledby="live-heading">
+        <h2 id="live-heading">Live at Modular Nights</h2>
         <div class="video-slot">
-          <iframe
+          <iframe class="live-video"
             src="https://www.youtube.com/embed/ADs1MC_c3Z8?start=2950"
-            title="gon pulvo — Live at Modular Nights"
+            title="gon pulvo — Live at Modular Nights, Substation, Seattle"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
             loading="lazy"
           ></iframe>
-          <div class="video-slot-label">gon pulvo — Live at Modular Nights</div>
         </div>
-        <h3>gon pulvo — Live at Modular Nights</h3>
-        <p class="sub">Substation · Seattle · April 12, 2026</p>
-        <p>Live hardware electronic performance at Modular Nights in Seattle.</p>
-
-        <!-- YouTube Playlist -->
-        <div class="playlist-embed">
-          <iframe
-            src="https://www.youtube.com/embed/videoseries?list=PLplE2hKEV9b3xdf0F25YqJTqeH0WISWVn"
-            title="gon pulvo — Recorded Work Playlist"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
-
-        <div class="btns" style="margin-top:16px">
-          <a class="btn btn--accent" href="https://gonpulvo.bandcamp.com/album/boogeyman" target="_blank" rel="noopener">♫ Bandcamp</a>
-          <a class="btn" href="https://youtube.com/@gonpulvo" target="_blank" rel="noopener">▶ YouTube</a>
-          <a class="btn" href="https://open.spotify.com/artist/4HAYtJiiO0XJlo79hS2ySI" target="_blank" rel="noopener">🟢 Spotify</a>
-          <a class="btn" href="https://soundcloud.com/poruvo" target="_blank" rel="noopener">☁ SoundCloud</a>
-          <a class="btn" href="https://weeklybeats.com/gonpulvo" target="_blank" rel="noopener">📅 WeeklyBeats</a>
-          <a class="btn" href="https://boogeyman.gonpulvo.com" target="_blank" rel="noopener">👻 Boogeyman Project</a>
-        </div>
+        <p class="live-caption"><strong>Substation · Seattle, WA · April 12, 2026</strong><br>Two Dirtywave M8s · live sequencing · arrangement · effects · transitions · sound manipulation</p>
       </section>
 
-      <!-- ====================================================
-           SECTION 3 — BOOKING DETAILS
-      ==================================================== -->
-      <section id="booking-details" aria-labelledby="booking-details-heading">
-        <h2 id="booking-details-heading" class="glitch" data-text="Booking Details">Booking Details</h2>
+      <section id="performances" aria-labelledby="performances-heading">
+        <h2 id="performances-heading">Recent Performances</h2>
+        <ol class="performance-list">
+          <li>
+            <strong>Modular Nights</strong>
+            <span>Substation · Seattle, WA</span>
+            <time datetime="2026-04">April 2026</time>
+          </li>
+          <li>
+            <strong>The Green Thing</strong>
+            <span>Idyllwild, CA</span>
+            <time datetime="2026-06">June 2026</time>
+          </li>
+          <li>
+            <strong>WALKDONTRUN Seattle</strong>
+            <span>Seattle, WA</span>
+            <time datetime="2026-09">September 2026</time>
+          </li>
+          <li>
+            <strong>Modbang Seattle</strong>
+            <span>Seattle, WA</span>
+            <time datetime="2026-09">September 2026</time>
+          </li>
+        </ol>
+      </section>
 
-        <div class="info-card">
-          <div class="info-card-grid">
-            <div class="info-col">
-              <strong>Set Lengths</strong>
-              <ul>
-                <li>30 minutes</li>
-                <li>45 minutes</li>
-                <li>60 minutes</li>
-                <li>Shorter support sets available by arrangement</li>
-                <li>Extended sets available depending on the event</li>
-              </ul>
-            </div>
-            <div class="info-col">
-              <strong>Best Fit</strong>
-              <ul class="tag-list">
-                <li>Experimental electronic</li>
-                <li>House / club-adjacent electronic</li>
-                <li>Jungle / drum &amp; bass</li>
-                <li>Bass-oriented electronic</li>
-                <li>Ambient / experimental</li>
-                <li>Noise-adjacent</li>
-                <li>Gallery and art-space events</li>
-                <li>DIY mixed bills</li>
-                <li>Electronic support slots</li>
-                <li>Festivals and art walks</li>
-              </ul>
-            </div>
-            <div class="info-col">
-              <strong>Technical Needs</strong>
-              <ul>
-                <li>Table or stable performance surface</li>
-                <li>Power outlet</li>
-                <li>Stereo DI or two 1/4-inch TRS connections into the venue system</li>
-                <li>Venue PA appropriate for the room</li>
-                <li>Optional projector or display with HDMI for visuals</li>
-              </ul>
-            </div>
-            <div class="info-col">
-              <strong>Performance Format</strong>
-              <p>
-                gon pulvo performs electronic music live using 2x Dirtywave M8 units for real-time sequencing, arrangement, transitions, effects, and sound manipulation. Songs are actively performed and restructured during the set rather than simply played back as finished recordings. Audio-reactive visuals can be added when appropriate.
-              </p>
-            </div>
+      <section id="press" aria-labelledby="press-heading">
+        <h2 id="press-heading">Press</h2>
+        <div class="press-feature">
+          <div>
+            <p class="press-meta">Happy Mag · September 24, 2026</p>
+            <h3>gon pulvo slows down the tracker chaos for mid-tempo magic with ‘opportunity’</h3>
+            <p>Review of “opportunity,” WeeklyBeats, HOME8GAIN and gon pulvo’s hardware-based production.</p>
+            <a class="press-read" href="https://happymag.tv/gon-pulvo-review/" target="_blank" rel="noopener">Read the Happy Mag review <span aria-hidden="true">→</span></a>
+            <p class="press-pickup">Secondary pickup: <a href="https://musick.com.au/news/gon-pulvo-slows-down-the-tracker-chaos-for-mid-tempo-magic-with-opportunity/" target="_blank" rel="noopener">musick.com.au</a>, which credits Happy Mag as the original source.</p>
           </div>
+          <blockquote class="press-quote">
+            “one of his most patient and evocative tracks to date”
+            <cite>Happy Mag · September 24, 2026</cite>
+          </blockquote>
         </div>
       </section>
 
-      <!-- ====================================================
-           SECTION 4 — SHORT BIO
-      ==================================================== -->
+      <section id="player" aria-labelledby="player-heading" class="print-hide">
+        <h2 id="player-heading">Web Player</h2>
+        <div class="player-promo">
+          <div>
+            <p class="player-kicker">gon pulvo / play</p>
+            <h3>Listen closely.</h3>
+            <p>A small, artist-controlled listening room for gon pulvo releases. Explore the releases or open a random track.</p>
+          </div>
+          <a class="btn btn--primary" href="https://play.gonpulvo.com" target="_blank" rel="noopener">Open the listening room</a>
+        </div>
+      </section>
+
+      <section id="music" aria-labelledby="music-heading" class="print-hide">
+        <h2 id="music-heading">Hear the Range</h2>
+        <div class="track-list">
+          <article class="track">
+            <h3>dissipation</h3>
+            <p>Cumbia pushed progressively into fast jungle / drum &amp; bass.</p>
+            <a href="https://music.apple.com/us/album/dissipation-single/6803990533" target="_blank" rel="noopener">Apple Music</a>
+            <a href="https://weeklybeats.com/gonpulvo/music/dissipation" target="_blank" rel="noopener">WeeklyBeats</a>
+          </article>
+          <article class="track">
+            <h3>sparkling summer sorceror</h3>
+            <p>Bright, melodic electronic music with early-2000s synth textures.</p>
+            <a href="https://music.apple.com/us/album/sparkling-summer-sorceror-single/6799438395" target="_blank" rel="noopener">Apple Music</a>
+            <a href="https://weeklybeats.com/gonpulvo/music/sparkling-summer-sorceror" target="_blank" rel="noopener">WeeklyBeats</a>
+          </article>
+          <article class="track">
+            <h3>vorticity</h3>
+            <p>Avant-garde post-surf built from guitar, tenor sax, vocals and electronics.</p>
+            <a href="https://weeklybeats.com/gonpulvo/music/vorticity" target="_blank" rel="noopener">WeeklyBeats</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="tech" aria-labelledby="tech-heading">
+        <h2 id="tech-heading">Live Format</h2>
+        <dl class="format-grid">
+          <div><dt>Format</dt><dd>Live hardware electronic</dd></div>
+          <div><dt>Set lengths</dt><dd>30 / 45 / 60 minutes</dd></div>
+          <div><dt>Rig</dt><dd>2 Dirtywave M8 units</dd></div>
+          <div><dt>Setup</dt><dd>Approximately 15–20 minutes</dd></div>
+          <div><dt>Audio</dt><dd>Stereo DI or 2 × 1/4-inch TRS inputs</dd></div>
+          <div><dt>Stage</dt><dd>Table or stable surface and power</dd></div>
+          <div><dt>Visuals</dt><dd>Optional audio-reactive visuals; projector/display with HDMI by advance arrangement</dd></div>
+          <div><dt>Travel</dt><dd>Pacific Northwest and regional bookings by arrangement</dd></div>
+        </dl>
+        <p class="fit-line"><strong>Good fit for:</strong> electronic, experimental, house, jungle / drum &amp; bass, bass, galleries, art spaces and mixed bills.</p>
+      </section>
+
       <section id="bio" aria-labelledby="bio-heading">
-        <h2 id="bio-heading" class="glitch" data-text="Artist Bio">Artist Bio</h2>
-        <p class="bio-short" itemprop="description">
-          <strong>gon pulvo</strong> is the experimental electronic project of Stephon X. Jones. His music moves freely through hip hop, house, ambient, jungle, bass music, and less easily categorized territory, using repetition, unusual sound design, improvisational decisions, and narrative ideas as connective tissue.
-        </p>
-
-        <details class="bio-expand print-hide">
-          <summary>Read full bio ↓</summary>
-          <p>
-            gon pulvo is the experimental electronic project of Stephon X. Jones. His music moves between hip hop, house, ambient, jungle, bass music, and less easily categorized territory, with each track built around whatever musical language best fits the idea.
+        <h2 id="bio-heading">About</h2>
+        <div class="bio-grid">
+          <p class="bio-short" itemprop="description">
+            <strong>gon pulvo</strong> is the experimental electronic project of Stephon X. Jones, moving through house, jungle, hip hop, ambient music and experimental composition. Live sets use two Dirtywave M8s to sequence, restructure and manipulate songs in real time, shifting between dance-floor momentum and less predictable electronic territory.
           </p>
-          <p>
-            The project is centered on connection: between styles, sounds, people, experiences, and recurring ideas. Releases can move from dance music to abstract sound design, narrative work, rock, or experimental composition without treating genre as a fixed identity.
-          </p>
-          <p>
-            Live, Stephon performs and reshapes the catalog in real time using hardware sequencing and arrangement. Recent work includes the narrative-driven Boogeyman project alongside standalone releases and ongoing genre experiments.
-          </p>
-        </details>
-
-        <div class="btns print-hide" style="margin-top:16px">
-          <button class="btn" onclick="window.print()">🖨 Print One-Sheet</button>
+          <details class="press-bio">
+            <summary>Full press bio</summary>
+            <p>gon pulvo is the experimental electronic project of Washington-based artist Stephon X. Jones. His music moves between house, jungle, hip hop, ambient, bass and experimental composition, with each piece shaped by the sounds and structures it needs. Repetition, unusual sound design and narrative ideas connect a catalog that can move from club-focused rhythms to abstract textures, rock instrumentation or exploratory composition. Recent work includes the narrative-driven Boogeyman project and a range of standalone releases.</p>
+            <p>Live, Jones performs with two Dirtywave M8 units, using them as instruments rather than playback devices. He sequences, arranges and reshapes material in real time, working transitions, effects and dynamics into a set that responds to the room. The performance moves between rhythmic focus, atmosphere and unexpected turns, adapting to different event contexts. gon pulvo is based in Washington's Puget Sound region and available for Pacific Northwest and regional bookings, with travel by arrangement.</p>
+          </details>
         </div>
       </section>
 
-      <!-- ====================================================
-           SECTION 5 — PERFORMANCE / TECHNICAL INFO
-      ==================================================== -->
-      <section id="rider" aria-labelledby="rider-heading">
-        <h2 id="rider-heading" class="glitch" data-text="Performance & Technical Info">
-          Performance &amp; Technical Info
-        </h2>
-
-        <div class="rider-grid">
-          <div class="rider-card">
-            <h4>Minimum Setup</h4>
-            <ul>
-              <li>1 table or stable performance surface</li>
-              <li>1 power outlet</li>
-              <li>Stereo DI or two 1/4-inch TRS connections into the venue system</li>
-              <li>Venue PA appropriate for the room</li>
-              <li>Setup time: 15-20 minutes</li>
-              <li>Typical performance length: 30-60 minutes</li>
-            </ul>
-          </div>
-          <div class="rider-card">
-            <h4>Optional — Visuals</h4>
-            <ul>
-              <li>Projector or display</li>
-              <li>HDMI input</li>
-              <li>Advance coordination required</li>
-            </ul>
-          </div>
-          <div class="rider-card">
-            <h4>Core Live Instrument</h4>
-            <p><strong>2x Dirtywave M8</strong> — hardware sequencer, sampler, synthesizer, arranger, and live performance instrument</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- ====================================================
-           SECTION 6 — SELECTED RECENT WORK
-      ==================================================== -->
-      <section id="selected-work" aria-labelledby="selected-work-heading">
-        <h2 id="selected-work-heading" class="glitch" data-text="Selected Recent Work">Selected Recent Work</h2>
-        <div class="rider-grid">
-          <div class="rider-card">
-            <h4>dissipation</h4>
-            <p>Cumbia accelerating into jungle / drum &amp; bass.</p>
-            <div class="btns">
-              <a class="btn" href="https://music.apple.com/us/album/dissipation-single/6803990533?utm_source=chatgpt.com" target="_blank" rel="noopener">Apple Music</a>
-              <a class="btn" href="https://weeklybeats.com/gonpulvo/music/dissipation?utm_source=chatgpt.com" target="_blank" rel="noopener">WeeklyBeats</a>
-            </div>
-          </div>
-          <div class="rider-card">
-            <h4>sparkling summer sorceror</h4>
-            <p>Shimmering synth-heavy electronic music with early-2000s textures.</p>
-            <div class="btns">
-              <a class="btn" href="https://music.apple.com/us/album/sparkling-summer-sorceror-single/6799438395?utm_source=chatgpt.com" target="_blank" rel="noopener">Apple Music</a>
-              <a class="btn" href="https://weeklybeats.com/gonpulvo/music/sparkling-summer-sorceror?utm_source=chatgpt.com" target="_blank" rel="noopener">WeeklyBeats</a>
-            </div>
-          </div>
-          <div class="rider-card">
-            <h4>vorticity</h4>
-            <p>Avant-garde post-surf rock with guitar, tenor sax, vocals, and electronics.</p>
-            <div class="btns">
-              <a class="btn" href="https://weeklybeats.com/gonpulvo/music/vorticity?utm_source=chatgpt.com" target="_blank" rel="noopener">WeeklyBeats</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ====================================================
-           SECTION 7 — HOME8GAIN
-      ==================================================== -->
-      <section id="home8gain" aria-labelledby="home8gain-heading">
-        <h2 id="home8gain-heading" class="glitch" data-text="HOME8GAIN">HOME8GAIN</h2>
-        <div class="contact-card">
-          <p class="subtitle">House Project</p>
-          <p class="bio-short">
-            <strong>HOME8GAIN</strong> is gon pulvo's house project: loose, repetitive, groove-focused electronic music built for movement, momentum, and the space between club structure and live experimentation.
-          </p>
-          <div class="btns" style="margin-top:16px">
-            <a class="btn btn--yellow" href="https://gonpulvo.bandcamp.com/album/home-8gain" target="_blank" rel="noopener">♫ Bandcamp</a>
-            <a class="btn btn--accent" href="https://open.spotify.com/album/7Dg05IjIEctspSLWzuAZrB" target="_blank" rel="noopener">🟢 Spotify</a>
-            <a class="btn" href="https://music.apple.com/us/album/home8gain-single/6802301724?l=es-MX" target="_blank" rel="noopener">🍎 Apple Music</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- ====================================================
-           SECTION 8 — PROJECTS
-      ==================================================== -->
       <section id="projects" aria-labelledby="projects-heading" class="print-hide">
-        <h2 id="projects-heading" class="glitch" data-text="Featured Project">Featured Project</h2>
-
-        <details open>
-          <summary>
-            <strong>Boogeyman</strong>
-            <span class="stamp">Project</span>
-          </summary>
-          <p>
-            Boogeyman is a 15-track narrative-driven electronic project built around recurring characters, shifting perspectives, dream logic, identity, fear, and causality. Its story unfolds through both music and accompanying narrative material, with motifs and events recurring in altered forms throughout the project.
-          </p>
-          <p class="sub"><strong>Released in 2025.</strong></p>
-          <div class="btns">
-            <a class="btn btn--yellow" href="https://gonpulvo.bandcamp.com/album/boogeyman" target="_blank" rel="noopener">♫ Listen on Bandcamp</a>
-            <a class="btn btn--accent" href="https://youtube.com/playlist?list=PLplE2hKEV9b3xdf0F25YqJTqeH0WISWVn" target="_blank" rel="noopener">▶ Watch on YouTube</a>
-            <a class="btn" href="https://boogeyman.gonpulvo.com" target="_blank" rel="noopener">👻 Project Website</a>
-            <a class="btn" href="https://shop.gonpulvo.com" target="_blank" rel="noopener">🛒 Shop</a>
-          </div>
-        </details>
-
-        <details>
-          <summary>
-            <strong>M8 Community Jam</strong> — collaborative releases
-            <span class="stamp">Community</span>
-          </summary>
-          <p>
-            gon pulvo regularly contributes to the M8 Community Jam, a recurring community release series built around music created with the Dirtywave M8 tracker.
-          </p>
-          <div class="btns">
-            <a class="btn btn--accent" href="https://m8communityjam.bandcamp.com" target="_blank" rel="noopener">Community Releases</a>
-          </div>
-        </details>
-      </section>
-
-      <!-- ====================================================
-         SECTION 9 — SOCIALS / LINKS
-      ==================================================== -->
-      <section id="socials" aria-labelledby="socials-heading" class="print-hide">
-        <h2 id="socials-heading" class="glitch" data-text="Links">Links</h2>
-        <p class="sub" style="margin-bottom:.85em">Music, social, and contact links.</p>
-        <div class="btns">
-          <a class="btn btn--accent" href="https://gonpulvo.bandcamp.com/album/boogeyman" target="_blank" rel="noopener">♫ Bandcamp</a>
-          <a class="btn" href="https://open.spotify.com/artist/4HAYtJiiO0XJlo79hS2ySI" target="_blank" rel="noopener">🟢 Spotify</a>
-          <a class="btn" href="https://music.apple.com/us/artist/gon-pulvo/1333207681" target="_blank" rel="noopener">🍎 Apple Music</a>
-          <a class="btn" href="https://youtube.com/@gonpulvo" target="_blank" rel="noopener">▶ YouTube</a>
-          <a class="btn" href="https://soundcloud.com/poruvo" target="_blank" rel="noopener">☁ SoundCloud</a>
-          <a class="btn" href="https://weeklybeats.com/gonpulvo" target="_blank" rel="noopener">📅 WeeklyBeats</a>
-          <a class="btn" href="https://instagram.com/poruvo" target="_blank" rel="noopener">📷 Instagram</a>
-          <a class="btn" href="https://x.com/gonpulvo" target="_blank" rel="noopener">✖ X / Twitter</a>
-          <a class="btn" href="https://www.facebook.com/p/gon-pulvo-61579280514776/" target="_blank" rel="noopener">📘 Facebook</a>
-          <a class="btn" href="https://www.gonpulvo.com" target="_blank" rel="noopener">🌐 Website</a>
-          <a class="btn btn--accent" href="https://play.gonpulvo.com" target="_blank" rel="noopener">🎧 Listening Room</a>
-          <a class="btn btn--yellow" href="https://shop.gonpulvo.com" target="_blank" rel="noopener">🛒 Shop</a>
+        <h2 id="projects-heading">Selected Projects</h2>
+        <div class="project-list">
+          <article>
+            <h3>HOME8GAIN</h3>
+            <p>House-focused project built around repetition, groove and movement.</p>
+            <a href="https://gonpulvo.bandcamp.com/album/home-8gain" target="_blank" rel="noopener">Listen on Bandcamp</a>
+          </article>
+          <article>
+            <h3>Boogeyman</h3>
+            <p>Narrative-driven experimental electronic project.</p>
+            <a href="https://boogeyman.gonpulvo.com" target="_blank" rel="noopener">Project site</a>
+            <a href="https://gonpulvo.bandcamp.com/album/boogeyman" target="_blank" rel="noopener">Listen on Bandcamp</a>
+          </article>
         </div>
       </section>
 
-      <!-- ====================================================
-         SECTION 10 — CONTACT
-      ==================================================== -->
+      <section id="assets" aria-labelledby="assets-heading" class="print-hide">
+        <h2 id="assets-heading">Press Assets</h2>
+        <p><a class="btn btn--primary" href="assets/gon-pulvo-press-kit.zip" download="gon-pulvo-press-kit.zip">Download press kit (.zip)</a></p>
+        <div class="asset-list">
+          <a href="assets/artistphoto.png" download="gon-pulvo-artist-photo.png">
+            <strong>Artist photo</strong><span>PNG · 1200 × 630</span>
+          </a>
+          <a href="assets/gp-logo-320.png" download="gon-pulvo-logo.png">
+            <strong>Square logo</strong><span>PNG · 320 × 320</span>
+          </a>
+          <a href="assets/booking-bio.txt" download="gon-pulvo-booking-bio.txt">
+            <strong>Booking bio</strong><span>TXT · short</span>
+          </a>
+          <a href="assets/press-bio.txt" download="gon-pulvo-press-bio.txt">
+            <strong>Press bio</strong><span>TXT · full</span>
+          </a>
+          <a href="assets/technical-rider.txt" download="gon-pulvo-technical-rider.txt">
+            <strong>Technical rider</strong><span>TXT</span>
+          </a>
+        </div>
+      </section>
+
       <section id="contact" aria-labelledby="contact-heading">
-        <h2 id="contact-heading" class="glitch" data-text="Contact / Book">Contact / Book</h2>
+        <h2 id="contact-heading">Booking</h2>
         <div class="contact-card">
-          <address>
-            <p>✉️ <strong>Email:</strong> <a href="mailto:contact@gonpulvo.com">contact@gonpulvo.com</a></p>
-            <p>📷 <strong>Instagram:</strong> <a href="https://instagram.com/poruvo" target="_blank" rel="noopener">@poruvo</a></p>
-            <p>🗨️ <strong>Discord:</strong> @poruvo</p>
-          </address>
-          <p class="contact-note">
-            For booking, performance, press, or licensing inquiries, email is preferred.<br>
-            Please include: event date, city, venue, set length, compensation,
-            and technical details if available.
-          </p>
-          <div class="btns" style="margin-top:20px">
-            <a class="btn btn--primary" href="mailto:contact@gonpulvo.com">📩 Book gon pulvo</a>
-            <a class="btn" href="https://instagram.com/poruvo" target="_blank" rel="noopener">📷 Instagram DM</a>
+          <p class="booking-note">For booking, performance, press or licensing inquiries, email is preferred. Include the date, city, venue, set length and compensation when available.</p>
+          <div class="contact-actions">
+            <a class="btn btn--primary" href="mailto:contact@gonpulvo.com">Email contact@gonpulvo.com</a>
+            <a class="btn" href="https://instagram.com/poruvo" target="_blank" rel="noopener">Instagram @poruvo</a>
           </div>
         </div>
       </section>
 
-      <!-- ====================================================
-           FOOTER
-      ==================================================== -->
       <footer>
-        <div class="footer-cta print-hide">
-          <a class="btn btn--primary" href="mailto:contact@gonpulvo.com">📩 Book gon pulvo</a>
-          <a class="btn btn--accent" href="https://gonpulvo.bandcamp.com/album/boogeyman" target="_blank" rel="noopener">♫ Bandcamp</a>
-          <a class="btn" href="https://youtube.com/@gonpulvo" target="_blank" rel="noopener">▶ YouTube</a>
-          <a class="btn" href="https://instagram.com/poruvo" target="_blank" rel="noopener">📷 Instagram</a>
-        </div>
-        <p>
-          &copy; <span id="yr"></span> gon pulvo &mdash; Electronic Press Kit
-          &middot; <a href="https://gonpulvo.com">gonpulvo.com</a>
-        </p>
+        <p>&copy; <span id="yr"></span> gon pulvo · <a href="https://gonpulvo.bandcamp.com" target="_blank" rel="noopener">Bandcamp</a> · <a href="https://youtube.com/@gonpulvo" target="_blank" rel="noopener">YouTube</a> · <a href="https://gonpulvo.com" target="_blank" rel="noopener">gonpulvo.com</a></p>
       </footer>
 
     </article>
